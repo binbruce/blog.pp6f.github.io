@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Node.js在各系统的安装 - Bruce&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bruce"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bruce"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="主要介绍如何安装"><meta property="og:type" content="blog"><meta property="og:title" content="Node.js在各系统的安装"><meta property="og:url" content="http://blog.pp6f.com/2022/02/19/Dev/Nodejs/"><meta property="og:site_name" content="Bruce&#039;s Blog"><meta property="og:description" content="主要介绍如何安装"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://nodejs.org/static/images/logo.svg"><meta property="article:published_time" content="2022-02-19T19:10:41.000Z"><meta property="article:modified_time" content="2022-04-19T20:45:41.320Z"><meta property="article:author" content="Bruce"><meta property="article:tag" content="Node.js"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://nodejs.org/static/images/logo.svg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.pp6f.com/2022/02/19/Dev/Nodejs/"},"headline":"Node.js在各系统的安装","image":[],"datePublished":"2022-02-19T19:10:41.000Z","dateModified":"2022-04-19T20:45:41.320Z","author":{"@type":"Person","name":"Bruce"},"publisher":{"@type":"Organization","name":"Bruce's Blog","logo":{"@type":"ImageObject","url":"http://blog.pp6f.com/img/logo.png"}},"description":"主要介绍如何安装"}</script><link rel="canonical" href="http://blog.pp6f.com/2022/02/19/Dev/Nodejs/"><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?1216c36d0c1f22cc295e5fb60b670b9b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-5RZTMS5D40" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-5RZTMS5D40');</script><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+        <script>
+            function switchTab(element) {
+                const id = element.parentElement.id;
+                const tabElements = element.parentElement.parentElement.children;
+                const contentElements = element.parentElement.parentElement.parentElement.parentElement.children[1].children;
+                for (let i = 0; i < tabElements.length; i++) {
+                    const $tab = tabElements[i];
+                    const $content = contentElements[i];
+                    if ($tab.id === id) {
+                        $tab.classList.add('is-active');
+                    } else {
+                        $tab.classList.remove('is-active');
+                    }
+                    if ($content.id === id) {
+                        $content.classList.remove('is-hidden');
+                    } else {
+                        $content.classList.add('is-hidden');
+                    }
+                }
+            }
+        </script>
+        <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" target="_blank" rel="noopener" href="https://pp6f.com">主页</a><a class="navbar-item" href="/">博客</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">我</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-lightbulb" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://nodejs.org/static/images/logo.svg" alt="Node.js在各系统的安装"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item copyright article-title type-2">原创</span><span class="level-item"><time dateTime="2022-02-19T19:10:41.000Z" title="2/19/2022, 7:10:41 PM">2022-02-19</time>发表</span><span class="level-item"><time dateTime="2022-04-19T20:45:41.320Z" title="4/19/2022, 8:45:41 PM">2022-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Dev/">Dev</a><span> / </span><a class="link-muted" href="/categories/Dev/Node-js/">Node.js</a></span><span class="level-item">4 分钟读完 (大约670个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Node.js在各系统的安装</h1><div class="copyright article-block type-2"><p>版权申明：本文为原创文章，转载请注明原文出处</p><p>原文链接：<a href="http://blog.pp6f.com/2022/02/19/Dev/Nodejs/" target="_blank">http://blog.pp6f.com/2022/02/19/Dev/Nodejs/</a></p></div><div class="content"><p>本文介绍 如何在各系统环境下安装<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">Node.js</a>运行环境</p>
+<span id="more"></span>
+
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><ul>
+<li><a href="#%E7%B4%A2%E5%BC%95">索引</a></li>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#windows%E5%AE%89%E8%A3%85nodejs">Windows安装Node.js</a></li>
+<li><a href="#ubuntu%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BDnodejs">ubuntu安装&#x2F;卸载Node.js</a><ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E5%8D%B8%E8%BD%BD">卸载</a></li>
+</ul>
+</li>
+<li><a href="#centos7-%E5%AE%89%E8%A3%85nodejs">CentOS7 安装Node.js</a><ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%AE%98%E6%96%B9%E7%BC%96%E8%AF%91%E5%A5%BD%E7%9A%84%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85">使用官方编译好的文件安装</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>简单的说 Node.js 就是运行在服务端的 JavaScript。</li>
+<li>Node.js 更多的介绍 在<a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-tutorial.html">菜鸟网络</a>上可以看到</li>
+<li>本文主要介绍如何在各系统环境下安装Node.js</li>
+<li>这里会随时添加各系统的安装方法</li>
+</ul>
+<h1 id="Windows安装Node-js"><a href="#Windows安装Node-js" class="headerlink" title="Windows安装Node.js"></a>Windows安装Node.js</h1><ul>
+<li><p>打开<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">官网下载页</a></p>
+</li>
+<li><p>下载Windows安装包&#x2F;二进制文件</p>
+</li>
+<li><p>运行下载的安装程序 按提示操作即可</p>
+</li>
+<li><p>配置环境变量</p>
+</li>
+<li><p>测试安装是否成功 如果出现版本号即为安装成功</p>
+<pre><code>  $ node -v
+  $ npm -v
+</code></pre>
+</li>
+</ul>
+<h1 id="ubuntu安装-x2F-卸载Node-js"><a href="#ubuntu安装-x2F-卸载Node-js" class="headerlink" title="ubuntu安装&#x2F;卸载Node.js"></a>ubuntu安装&#x2F;卸载Node.js</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>ubuntu安装Node.js有很多种方法<br>可以通过<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">官网提供</a>的源码安装<br>也可以通过官方提供的编译好的文件来安装</li>
+<li>这里使用的是ubuntu的apt安装</li>
+</ul>
+<ol>
+<li><p>检查可更新的软件</p>
+<pre><code> $ sudo apt-get update
+</code></pre>
+</li>
+<li><p>使用apt工具安装低版本的node和npm</p>
+<pre><code> $ sudo apt-get install nodejs
+ $ sudo apt install nodejs-legacy
+ $ sudo apt install npm
+</code></pre>
+<blockquote>
+<p>如果你的网络安装比较慢，可以使用淘宝的镜像</p>
+<pre><code>   $ sudo npm config set registry https://registry.npm.taobao.org
+</code></pre>
+</blockquote>
+</li>
+<li><p>安装更新版本的工具N</p>
+<pre><code> $ sudo npm install n -g
+</code></pre>
+</li>
+<li><p>使用N工具更新node的版本</p>
+<pre><code> $ sudo n stable
+</code></pre>
+</li>
+<li><p>测试安装是否成功 如果出现版本号即为安装成功</p>
+<pre><code> $ node -v
+ $ npm -v
+</code></pre>
+</li>
+</ol>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><ul>
+<li><p>卸载node.js</p>
+<pre><code>  $ sudo apt-get remove nodejs
+</code></pre>
+</li>
+</ul>
+<h1 id="CentOS7-安装Node-js"><a href="#CentOS7-安装Node-js" class="headerlink" title="CentOS7 安装Node.js"></a>CentOS7 安装Node.js</h1><h2 id="使用官方编译好的文件安装"><a href="#使用官方编译好的文件安装" class="headerlink" title="使用官方编译好的文件安装"></a>使用官方编译好的文件安装</h2><ul>
+<li><p>打开<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">官方下载地址</a>找到 <code>Linux Binaries(x64)</code> 后面的 <code>64-bit</code> 获取下载地址</p>
+</li>
+<li><p>在命令行输入下载命令 如果没有安装<code>wget</code>, 使用 <code>$ yum install -y wget</code> 命令安装</p>
+<pre><code>  $ wget https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-x64.tar.xz
+</code></pre>
+</li>
+<li><p>找到下载的文件 执行命令 根据你下载包的文件名更改</p>
+<pre><code>  $ xz -d node-v16.14.0-linux-x64.tar.xz
+  $ tar -xf node-v16.14.0-linux-x64.tar
+</code></pre>
+</li>
+<li><p>进入解压后的文件夹 执行下列命令 添加环境变量<br>根据自己的路径修改</p>
+<pre><code>  $ ln -s ~/node-v16.14.0-linux-x64/bin/node /usr/bin/node
+  $ ln -s ~/node-v16.14.0-linux-x64/bin/npm /usr/bin/npm
+  $ ln -s ~/node-v16.14.0-linux-x64/bin/npm /usr/bin/npx
+</code></pre>
+</li>
+<li><p>以上步骤完成后 使用下列命令测试安装结果</p>
+<pre><code>  $ note -v
+  $ npm -v
+  $ npx -v
+</code></pre>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Node.js在各系统的安装</p><p><a href="http://blog.pp6f.com/2022/02/19/Dev/Nodejs/">http://blog.pp6f.com/2022/02/19/Dev/Nodejs/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Bruce</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-02-19</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a><a class="icons" rel="noopener" target="_blank" title="ShareAlike" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="icon fab fa-creative-commons-sa"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Node-js/">Node.js</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62075f04049246001a1511a9&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/donate/alipay.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/donate/wechat.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/02/20/Hexo/Hexo-Article/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Hexo创建Markdown格式文章</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/02/17/Github/Github_Actions_Hexo/"><span class="level-item">Github Actions自动部署Hexo个人博客到Github Pages仓库</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="binbruce/blog.pp6f.github.io" issue-term="pathname" label="some-issue-label" theme="github-light" crossorigin="anonymous" async></script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Bruce"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bruce</p><p class="is-size-6 is-block">Bruce&#039;s Blog</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">19</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">23</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/binbruce" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/binbruce"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Google" href="https://google.com/"><i class="fab fa-google"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#索引"><span class="level-left"><span class="level-item">1</span><span class="level-item">索引</span></span></a></li><li><a class="level is-mobile" href="#前言"><span class="level-left"><span class="level-item">2</span><span class="level-item">前言</span></span></a></li><li><a class="level is-mobile" href="#Windows安装Node-js"><span class="level-left"><span class="level-item">3</span><span class="level-item">Windows安装Node.js</span></span></a></li><li><a class="level is-mobile" href="#ubuntu安装-x2F-卸载Node-js"><span class="level-left"><span class="level-item">4</span><span class="level-item">ubuntu安装/卸载Node.js</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#安装"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">安装</span></span></a></li><li><a class="level is-mobile" href="#卸载"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">卸载</span></span></a></li></ul></li><li><a class="level is-mobile" href="#CentOS7-安装Node-js"><span class="level-left"><span class="level-item">5</span><span class="level-item">CentOS7 安装Node.js</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#使用官方编译好的文件安装"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">使用官方编译好的文件安装</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Dev/"><span class="level-start"><span class="level-item">Dev</span></span><span class="level-end"><span class="level-item tag">8</span></span></a><ul><li><a class="level is-mobile" href="/categories/Dev/Net-Core/"><span class="level-start"><span class="level-item">.Net Core</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/MySql/"><span class="level-start"><span class="level-item">MySql</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Next-js/"><span class="level-start"><span class="level-item">Next.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Nginx/"><span class="level-start"><span class="level-item">Nginx</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Node-js/"><span class="level-start"><span class="level-item">Node.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Git/"><span class="level-start"><span class="level-item">Git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/GitHub/"><span class="level-start"><span class="level-item">GitHub</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/System/"><span class="level-start"><span class="level-item">System</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/categories/System/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/Windows/"><span class="level-start"><span class="level-item">Windows</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F/"><span class="level-start"><span class="level-item">路由系统</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Tools/"><span class="level-start"><span class="level-item">Tools</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/categories/Tools/SSH/"><span class="level-start"><span class="level-item">SSH</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-02T17:05:08.000Z">2022-04-02</time></p><p class="title"><a href="/2022/04/02/Dev/mysql/">MySql 安装 使用</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/MySql/">MySql</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-31T01:51:11.000Z">2022-03-31</time></p><p class="title"><a href="/2022/03/31/Dev/nginx-log/">nginx 日志</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T20:30:21.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx-conf/">配置 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T15:08:09.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx/">CentOS 安装 使用 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T14:27:54.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/netcore/">CentOS安装 .NET Core 运行环境 并运行 .NET Core 程序</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Net-Core/">.Net Core</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">二月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Article/"><span class="tag">Article</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C#</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Dev/"><span class="tag">Dev</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Encrypt/"><span class="tag">Encrypt</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Actions/"><span class="tag">Github Actions</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Desktop/"><span class="tag">Github Desktop</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo-Theme/"><span class="tag">Hexo Theme</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySql/"><span class="tag">MySql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Net-Core/"><span class="tag">Net Core</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Node-js/"><span class="tag">Node.js</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Openwrt/"><span class="tag">Openwrt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SSH/"><span class="tag">SSH</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/System/"><span class="tag">System</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ubuntu/"><span class="tag">Ubuntu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Windows/"><span class="tag">Windows</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Bruce</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客, <span id="busuanzi_value_site_pv">0</span>次访问</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/binbruce"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script src="/js/night.js" defer></script><script>if (true == true) {
+			$(document).ready(function () {
+				var int = setInterval(fixCount, 100);
+				var uvOffSet = parseInt(13900);
+				var pvOffSet = parseInt(31900);
+				
+				function fixCount() {
+					var realUv = parseInt($("#busuanzi_value_site_uv").html())
+					var realPv = parseInt($("#busuanzi_value_site_pv").html())
+					if ($("#busuanzi_container_site_uv").css("display") != "none" && realUv > 0) {
+						clearInterval(int);
+						$("#busuanzi_value_site_uv").html(realUv + uvOffSet);
+						$("#busuanzi_value_site_pv").html(realPv + pvOffSet);
+					}
+				}
+			});
+		}</script>           <div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

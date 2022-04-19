@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>MySql 安装 使用 - Bruce&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bruce"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bruce"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="MySql安装 使用 MySql官网 yum安装官网下载页"><meta property="og:type" content="blog"><meta property="og:title" content="MySql 安装 使用"><meta property="og:url" content="http://blog.pp6f.com/2022/04/02/Dev/mysql/"><meta property="og:site_name" content="Bruce&#039;s Blog"><meta property="og:description" content="MySql安装 使用 MySql官网 yum安装官网下载页"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.pp6f.com/img/post/mysql/1.png"><meta property="og:image" content="http://blog.pp6f.com/img/post/mysql/2.png"><meta property="og:image" content="http://blog.pp6f.com/img/post/mysql/3.png"><meta property="article:published_time" content="2022-04-02T17:05:08.000Z"><meta property="article:modified_time" content="2022-04-19T20:45:41.320Z"><meta property="article:tag" content="MySql"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/../../img/post/mysql/1.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.pp6f.com/2022/04/02/Dev/mysql/"},"headline":"MySql 安装 使用","image":["http://blog.pp6f.com/img/post/mysql/1.png","http://blog.pp6f.com/img/post/mysql/2.png","http://blog.pp6f.com/img/post/mysql/3.png"],"datePublished":"2022-04-02T17:05:08.000Z","dateModified":"2022-04-19T20:45:41.320Z","author":{"@type":"Person","name":null},"publisher":{"@type":"Organization","name":"Bruce's Blog","logo":{"@type":"ImageObject","url":"http://blog.pp6f.com/img/logo.png"}},"description":"MySql安装 使用 MySql官网 yum安装官网下载页"}</script><link rel="canonical" href="http://blog.pp6f.com/2022/04/02/Dev/mysql/"><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?1216c36d0c1f22cc295e5fb60b670b9b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-5RZTMS5D40" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-5RZTMS5D40');</script><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+        <script>
+            function switchTab(element) {
+                const id = element.parentElement.id;
+                const tabElements = element.parentElement.parentElement.children;
+                const contentElements = element.parentElement.parentElement.parentElement.parentElement.children[1].children;
+                for (let i = 0; i < tabElements.length; i++) {
+                    const $tab = tabElements[i];
+                    const $content = contentElements[i];
+                    if ($tab.id === id) {
+                        $tab.classList.add('is-active');
+                    } else {
+                        $tab.classList.remove('is-active');
+                    }
+                    if ($content.id === id) {
+                        $content.classList.remove('is-hidden');
+                    } else {
+                        $content.classList.add('is-hidden');
+                    }
+                }
+            }
+        </script>
+        <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" target="_blank" rel="noopener" href="https://pp6f.com">主页</a><a class="navbar-item" href="/">博客</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">我</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-lightbulb" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item copyright article-title type-2">原创</span><span class="level-item"><time dateTime="2022-04-02T17:05:08.000Z" title="4/2/2022, 5:05:08 PM">2022-04-02</time>发表</span><span class="level-item"><time dateTime="2022-04-19T20:45:41.320Z" title="4/19/2022, 8:45:41 PM">2022-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Dev/">Dev</a><span> / </span><a class="link-muted" href="/categories/Dev/MySql/">MySql</a></span><span class="level-item">18 分钟读完 (大约2709个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">MySql 安装 使用</h1><div class="copyright article-block type-2"><p>版权申明：本文为原创文章，转载请注明原文出处</p><p>原文链接：<a href="http://blog.pp6f.com/2022/04/02/Dev/mysql/" target="_blank">http://blog.pp6f.com/2022/04/02/Dev/mysql/</a></p></div><div class="content"><ul>
+<li>MySql安装 使用</li>
+<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/">MySql官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/">yum安装官网下载页</a></li>
+</ul>
+<span id="more"></span>
+
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><ul>
+<li><a href="#%E7%B4%A2%E5%BC%95">索引</a></li>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD-%E5%AE%89%E8%A3%85mysql">官网下载 安装MySql</a><ul>
+<li><a href="#centos-%E5%AE%89%E8%A3%85mysql">CentOS 安装MySql</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-mysql">使用 MySql</a><ul>
+<li><a href="#%E5%90%AF%E5%8A%A8mysql%E6%9C%8D%E5%8A%A1-%E5%92%8C-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">启动mysql服务 和 常用命令</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96-mysql-%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81">获取 mysql 初始密码</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a></li>
+<li><a href="#mysql%E6%97%A5%E5%BF%97%E9%BB%98%E8%AE%A4%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE">Mysql日志默认存放位置</a></li>
+<li><a href="#mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%BB%98%E8%AE%A4%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE">Mysql数据库默认存放位置</a></li>
+<li><a href="#%E7%99%BB%E5%BD%95mysql">登录MySql</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3">查看默认端口</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3">修改默认端口</a></li>
+<li><a href="#%E5%BC%80%E5%90%AF-mysql-%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1">开启 mysql 远程服务</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%8E%88%E6%9D%83%E7%9A%84%E6%96%B9%E5%BC%8F">使用授权的方式</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7">创建用户</a></li>
+<li><a href="#%E6%8E%88%E6%9D%83">授权</a></li>
+<li><a href="#%E6%9B%B4%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E9%BB%98%E8%AE%A4%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84">更改数据库默认数据文件路径</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6">修改默认日志文件</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8sql%E8%AF%AD%E5%8F%A5">常用sql语句</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B7%A5%E5%85%B7">数据库工具</a><ul>
+<li><a href="#sqlyog-%E5%B7%A5%E5%85%B7">SQLyog 工具</a></li>
+</ul>
+</li>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接</a></li>
+</ul>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>MySql安装 使用</li>
+<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/">MySql官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/">yum安装官网下载页</a></li>
+</ul>
+<h1 id="官网下载-安装MySql"><a href="#官网下载-安装MySql" class="headerlink" title="官网下载 安装MySql"></a>官网下载 安装MySql</h1><h2 id="CentOS-安装MySql"><a href="#CentOS-安装MySql" class="headerlink" title="CentOS 安装MySql"></a>CentOS 安装MySql</h2><ul>
+<li>在mysql官网下载repo源</li>
+<li>centos的 yum 源中默认是没有mysql的，所以我们需要先去官网下载mysql的repo源并安装</li>
+</ul>
+<ol>
+<li><p>mysql官网下载链接：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/">mysql repo yum 下载地址</a><br><img src="/../../img/post/mysql/1.png"></p>
+</li>
+<li><p>上传 repo 源到 centos服务器<br> 将下载的mysql80-community-release-el7-5.noarch.rpm上传到centos服务器的：&#x2F;usr&#x2F;local&#x2F;mysql目录中</p>
+</li>
+<li><p>安装yum repo文件并更新yum缓存</p>
+<ul>
+<li>安装yum repo文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 进入文件所在文件夹</span><br><span class="line">cd /usr/local/mysql</span><br><span class="line"># 安装yum repo文件</span><br><span class="line">rpm -ivh mysql80-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure>
+执行结果会在&#x2F;etc&#x2F;yum.repos.d&#x2F;目录下生成两个repo文件：mysql-community.repo 和 mysql-community-source.repo  </li>
+<li>更新 yum 命令<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>选择mysql的安装版本</p>
+<ul>
+<li><p>当我们在使用yum安装mysql时，yum默认会从yum仓库中安装mysql最新的GA版本；如何选择自己的版本；</p>
+</li>
+<li><p>第一步： 查看mysql yum仓库中mysql版本，使用如下命令</p>
+<pre><code>yum repolist all | grep mysql
+</code></pre>
+<p>  <img src="/../../img/post/mysql/2.png"><br>  可以看到 MySQL 5.5 5.6 5.7为禁用状态 而MySQL 8.0为启用状态</p>
+</li>
+<li><p>或者可以编辑 mysql repo文件，</p>
+<pre><code>cat /etc/yum.repos.d/mysql-community.repo
+</code></pre>
+<p>  <img src="/../../img/post/mysql/3.png"><br>  将相应版本下的enabled改成 1 即可</p>
+</li>
+</ul>
+</li>
+<li><p>安装mysql</p>
+<pre><code>yum install mysql-community-server
+</code></pre>
+</li>
+</ol>
+<h1 id="使用-MySql"><a href="#使用-MySql" class="headerlink" title="使用 MySql"></a>使用 MySql</h1><h2 id="启动mysql服务-和-常用命令"><a href="#启动mysql服务-和-常用命令" class="headerlink" title="启动mysql服务 和 常用命令"></a>启动mysql服务 和 常用命令</h2><pre><code>   //启动命令
+   systemctl start mysqld.service
+   //重启命令
+   systemctl restart mysqld.service
+   //停止命令
+   systemctl stop mysqld.serivce
+   //开启mysql开机自启动
+   systemctl enable mysqld.service
+   //关闭mysql开机自启动
+   systemctl disable mysqld.service
+</code></pre>
+<h2 id="获取-mysql-初始密码"><a href="#获取-mysql-初始密码" class="headerlink" title="获取 mysql 初始密码"></a>获取 mysql 初始密码</h2><ul>
+<li><p>mysql在安装后会创建一个<code>root@locahost</code>账户，并且把初始的密码放到了<code>/var/log/mysqld.log</code>文件中；</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/mysqld.log |grep password</span><br><span class="line">[root@localhost mysql]# cat /var/log/mysqld.log |grep password</span><br><span class="line">2022-04-02T01:30:35.121174Z 6 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: a12LlkwlDe8:r</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用初始密码登录 mysql</p>
+<pre><code> mysql -u root -p
+</code></pre>
+</li>
+<li><p>修改初始密码<br>将MyNewPass4!替换成你的新密码 注意：后面的;分号一定不能少</p>
+<pre><code> ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;MyNewPass4!&#39;;
+</code></pre>
+</li>
+</ul>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
+<li><p>命令</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# mysql --help|grep &#x27;my.cnf&#x27;</span><br><span class="line">order of preference, my.cnf, $MYSQL_TCP_PORT,</span><br><span class="line">/etc/my.cnf</span><br><span class="line">/etc/mysql/my.cnf</span><br><span class="line">/usr/etc/my.cnf</span><br><span class="line">~/.my.cnf</span><br></pre></td></tr></table></figure>
+<p>  mysql会依次寻找配置文件 所以直接修改第一个 <code>/etc/my.cnf</code> 就可以了</p>
+</li>
+</ul>
+<h2 id="Mysql日志默认存放位置"><a href="#Mysql日志默认存放位置" class="headerlink" title="Mysql日志默认存放位置"></a>Mysql日志默认存放位置</h2><ul>
+<li><p>位置</p>
+<pre><code>/var/log/mysqld.log
+</code></pre>
+<p>  也可以查看<code>/etc/my.cnf</code>文件的<code>log-error=</code></p>
+</li>
+</ul>
+<h2 id="Mysql数据库默认存放位置"><a href="#Mysql数据库默认存放位置" class="headerlink" title="Mysql数据库默认存放位置"></a>Mysql数据库默认存放位置</h2><ul>
+<li><p>路径</p>
+<pre><code>/var/lib/mysql
+</code></pre>
+<p>  也可以查看<code>/etc/my.cnf</code>文件的<code>datadir=</code></p>
+</li>
+</ul>
+<h2 id="登录MySql"><a href="#登录MySql" class="headerlink" title="登录MySql"></a>登录MySql</h2><ul>
+<li><p>命令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]<span class="comment"># mysql -u root -p</span></span><br><span class="line">Enter password:                 <span class="comment">#这里输入密码</span></span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection <span class="built_in">id</span> is 9</span><br><span class="line">Server version: 8.0.28 MySQL Community Server - GPL</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2022, Oracle and/or its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">&#x27;help;&#x27;</span> or <span class="string">&#x27;\h&#x27;</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">&#x27;\c&#x27;</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看默认端口"><a href="#查看默认端口" class="headerlink" title="查看默认端口"></a>查看默认端口</h2><ul>
+<li>命令  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show global variables like <span class="string">&#x27;port&#x27;</span>;</span><br><span class="line">+---------------+-------+</span><br><span class="line">| Variable_name | Value |</span><br><span class="line">+---------------+-------+</span><br><span class="line">| port          | 3306  |</span><br><span class="line">+---------------+-------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="修改默认端口"><a href="#修改默认端口" class="headerlink" title="修改默认端口"></a>修改默认端口</h2><ul>
+<li><p>编辑文件 <code>/etc/my.cnf</code></p>
+  <figure class="highlight bash"><figcaption><span>/etc/my.cnf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For advice on how to change settings please see</span></span><br><span class="line"><span class="comment"># http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html</span></span><br><span class="line"><span class="comment"># *** DO NOT EDIT THIS FILE. It&#x27;s a template which will be copied to the</span></span><br><span class="line"><span class="comment"># *** default location during install, and will be replaced if you</span></span><br><span class="line"><span class="comment"># *** upgrade to a newer version of MySQL.</span></span><br><span class="line">[mysqld]</span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line">port=3306   <span class="comment">#根据自己的需要修改端口</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录</span></span><br><span class="line">basedir=L:\1_mysql\mysql-8.0.19-winx64 <span class="comment">#根据自己的文件位置修改</span></span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录</span></span><br><span class="line">datadir=L:\1_mysql\mysql-8.0.19-winx64\Data <span class="comment">#根据自己的文件位置修改</span></span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line">max_connections=200</span><br><span class="line"><span class="comment"># 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统</span></span><br><span class="line">max_connect_errors=10</span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为UTF8</span></span><br><span class="line">character-set-server=utf8</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line">default-storage-engine=INNODB</span><br><span class="line"><span class="comment"># 默认使用“mysql_native_password”插件认证</span></span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">sql_mode = <span class="string">&#x27;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION&#x27;</span></span><br><span class="line">[mysql]</span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line">default-character-set=utf8</span><br><span class="line">[client]</span><br><span class="line"><span class="comment"># 设置mysql客户端连接服务端时默认使用的端口</span></span><br><span class="line">port=3306   <span class="comment">#根据自己的需要修改端口</span></span><br><span class="line">default-character-set=utf8</span><br><span class="line"><span class="comment"># 设置此项很危险 会无密码访问数据库</span></span><br><span class="line"><span class="comment"># skip-grant-tables</span></span><br></pre></td></tr></table></figure>
+<p>  修改端口后启动mysql时 如果报错</p>
+<pre><code>Job for mysqld.service failed because the control process exited with error code. See &quot;systemctl status mysqld.service&quot; and &quot;journalctl -xe&quot; for details.
+</code></pre>
+<p>  而且日志<code>/var/log/mysqld.log</code>里 报错</p>
+<pre><code>[ERROR] [A] [Server] Can&#39;t start server: Bind on TCP/IP port: Permission denied
+[ERROR] [A] [Server] Do you already have another mysqld server running on port: 3307 ?
+[ERROR] [A] [Server] Aborting
+</code></pre>
+<p>  此问题是没关安全增强型Linux导致<br>  修改<code>/etc/selinux/config</code>文件内容的 <code>SELINUX=disabled</code></p>
+<pre><code>vi /etc/selinux/config
+</code></pre>
+<p>  修改好保存 重启服务器后 就可以启动<code>MySql</code>了</p>
+<pre><code>reboot
+</code></pre>
+</li>
+</ul>
+<h2 id="开启-mysql-远程服务"><a href="#开启-mysql-远程服务" class="headerlink" title="开启 mysql 远程服务"></a>开启 mysql 远程服务</h2><ul>
+<li>设置账号远程登录<ul>
+<li><p>可能你的帐号不允许从远程登陆，只能在localhost本地使用。</p>
+</li>
+<li><p>可以更改 <code>mysql</code> 数据库的 <code>user</code> 表的 <code>host</code> 项，从 <code>localhost</code> 改称 <code>%</code>  使用户可以通过远程登录<br>执行如下命令 登录mysql数据库</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#进入mysql</span><br><span class="line">mysql -u root -p</span><br><span class="line">#输入密码</span><br><span class="line"></span><br><span class="line">#选择使用库名mysql</span><br><span class="line">mysql&gt; use mysql;</span><br><span class="line"></span><br><span class="line">//这条命令的作用 让root用户可以在远程使用</span><br><span class="line">//在user表的user列 中匹配关键字为root的项 并修改host项的值为% </span><br><span class="line">mysql&gt; update user set host=&#x27;%&#x27; where user=&#x27;root&#x27;;</span><br><span class="line">//如果改回只能本机使用 执行：</span><br><span class="line">mysql&gt; update user set host=&#x27;localhost&#x27; where user=&#x27;root&#x27;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  选择查询 来自user表中的所有项 并显示出host列 和 user列中所有的数据</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select host,user from user;</span><br><span class="line">+-----------+------------------+</span><br><span class="line">| host      | user             |</span><br><span class="line">+-----------+------------------+</span><br><span class="line">| %         | root             |</span><br><span class="line">| localhost | mysql.infoschema |</span><br><span class="line">| localhost | mysql.session    |</span><br><span class="line">| localhost | mysql.sys        |</span><br><span class="line">+-----------+------------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="使用授权的方式"><a href="#使用授权的方式" class="headerlink" title="使用授权的方式"></a>使用授权的方式</h2><ul>
+<li><p>赋予任何主机访问数据的权限</p>
+<pre><code>mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39;;                    //给某用户所有权限
+mysql&gt; flush privileges;                                            //刷新
+</code></pre>
+</li>
+<li><p>如果想myuser用户使用mypassword密码从任何主机连接到mysql服务器的话。</p>
+<pre><code>mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;myuser&#39;@&#39;%&#39;IDENTIFIED BY &#39;mypassword&#39;;
+</code></pre>
+</li>
+<li><p>如果你想允许用户myuser从ip为192.168.1.3的主机连接到mysql服务器，并使用mypassword作为密码</p>
+<pre><code>mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;myuser&#39;@&#39;192.168.1.3&#39;IDENTIFIED BY &#39;mypassword&#39;;
+</code></pre>
+</li>
+</ul>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><ul>
+<li><p>命令:</p>
+<pre><code>mysql&gt; CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;;
+</code></pre>
+</li>
+<li><p>说明：</p>
+<ul>
+<li>username：你将创建的用户名</li>
+<li>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%</li>
+<li>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</li>
+</ul>
+</li>
+<li><p>例子：</p>
+<pre><code>mysql&gt; CREATE USER &#39;dog&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39;;
+mysql&gt; CREATE USER &#39;pig&#39;@&#39;192.168.1.101_&#39; IDENDIFIED BY &#39;123456&#39;;
+mysql&gt; CREATE USER &#39;pig&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39;;
+mysql&gt; CREATE USER &#39;pig&#39;@&#39;%&#39; IDENTIFIED BY &#39;&#39;;
+mysql&gt; CREATE USER &#39;pig&#39;@&#39;%&#39;;
+</code></pre>
+</li>
+</ul>
+<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><ul>
+<li><p>命令:</p>
+<pre><code>GRANT privileges ON databasename.tablename TO &#39;username&#39;@&#39;host&#39;;
+</code></pre>
+</li>
+<li><p>说明:</p>
+<ul>
+<li>privileges：用户的操作权限，如SELECT，INSERT，UPDATE等，如果要授予所的权限则使用ALL</li>
+<li>databasename：数据库名</li>
+<li>tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用<em>表示，如</em>.*</li>
+</ul>
+</li>
+<li><p>例子:</p>
+<pre><code>GRANT SELECT,INSERT,DELETE,CREATE ON test.user TO &#39;pig&#39;@&#39;%&#39;;
+GRANT ALL ON *.* TO &#39;pig&#39;@&#39;%&#39;;
+GRANT ALL ON maindataplus.* TO &#39;pig&#39;@&#39;%&#39;;
+</code></pre>
+</li>
+<li><p>注意:</p>
+<p>  用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令:</p>
+<pre><code>GRANT privileges ON databasename.tablename TO &#39;username&#39;@&#39;host&#39; WITH GRANT OPTION;
+</code></pre>
+<p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/Coke_uncle/article/details/93631110">以上参考文章</a></p>
+</li>
+</ul>
+<h2 id="更改数据库默认数据文件路径"><a href="#更改数据库默认数据文件路径" class="headerlink" title="更改数据库默认数据文件路径"></a>更改数据库默认数据文件路径</h2><ul>
+<li><p>进入mysql</p>
+<pre><code>mysql -u root -p
+输入mysql密码
+</code></pre>
+</li>
+<li><p>查看数据库默认路径</p>
+<pre><code>mysql&gt; show global variables like &#39;%datadir%&#39;;
+</code></pre>
+</li>
+<li><p>停止mysql</p>
+<pre><code>sudu systemctl stop mysqld.service
+</code></pre>
+</li>
+<li><p>拷贝数据库到新的路径 (新路径不要使用&#x2F;root&#x2F;路径 否则无论你如何修改都解决不了权限问题 永远报error 13 大坑)</p>
+<pre><code>cp -a -p /var/lib/mysql/* /mysql
+</code></pre>
+</li>
+<li><p>更改新路径的归属为mysql用户</p>
+<pre><code>chown -hR mysql:mysql /mysql
+</code></pre>
+</li>
+<li><p>更改新路径的权限</p>
+<pre><code>chmod 750 /mysql
+</code></pre>
+</li>
+<li><p>修改配置文件 <code>datadir</code>和<code>socket</code>项为新路径</p>
+<pre><code>vi /etc/my.cnf
+datadir=/mysql
+socket=/mysql/mysql.sock
+</code></pre>
+</li>
+<li><p>重新初始化配置文件</p>
+<pre><code>mysqld --defaults-file=/etc/my.cnf  --initialize --user=mysql
+</code></pre>
+</li>
+<li><p>启动mysql</p>
+<pre><code>sudu systemctl start mysqld.service
+</code></pre>
+</li>
+<li><p>坑</p>
+<blockquote>
+<p>遇到的大坑就是 千万别把新路径设置在 &#x2F;root下面 否则权限问题搞死你 永远启动报错 无论权限怎么给 都一样</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="修改默认日志文件"><a href="#修改默认日志文件" class="headerlink" title="修改默认日志文件"></a>修改默认日志文件</h2><ul>
+<li><p>和 修改数据库默认路径 基本相同</p>
+</li>
+<li><p>修改配置文件 <code>log-error</code>项为新路径</p>
+<pre><code>vi /etc/my.cnf
+log-error=/mysql/mysqld.log
+</code></pre>
+</li>
+<li><p>重启mysql 就可以了</p>
+<pre><code>sudu systemctl restart mysqld.service
+</code></pre>
+</li>
+<li><p>如果有权限问题 按 <a href="#%E6%9B%B4%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E9%BB%98%E8%AE%A4%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84">更改数据库默认数据文件路径</a> 给权限就可以了</p>
+</li>
+</ul>
+<h2 id="常用sql语句"><a href="#常用sql语句" class="headerlink" title="常用sql语句"></a>常用sql语句</h2><ul>
+<li><p>退出mysql</p>
+<pre><code>mysql&gt; quit
+mysql&gt; exit
+</code></pre>
+</li>
+<li><p>查看mysql版本</p>
+<pre><code>mysql&gt; select version();
+</code></pre>
+</li>
+<li><p>选择使用mysql这个库</p>
+<pre><code>mysql&gt; use mysql;
+</code></pre>
+</li>
+<li><p>删除来自user表单中 user列中匹配root而且host列中还需要匹配% 的项</p>
+<pre><code>mysql&gt; delete from user where User=&quot;root&quot; and Host=&quot;%&quot;;
+</code></pre>
+</li>
+<li><p>刷新</p>
+<pre><code>mysql&gt; flush privileges;
+</code></pre>
+</li>
+</ul>
+<h1 id="数据库工具"><a href="#数据库工具" class="headerlink" title="数据库工具"></a>数据库工具</h1><h2 id="SQLyog-工具"><a href="#SQLyog-工具" class="headerlink" title="SQLyog 工具"></a>SQLyog 工具</h2><ul>
+<li>当设置好了 远程访问mysql后可以使用SQLyog工具 来管理mysql包括用户管理 各个库的表单管理</li>
+<li>SQLyog管理用户：建立连接后选择mysql – 工具 – 用户管理</li>
+<li>权限授予 – 新建用户 – 删除用户 – 修改密码 – 每小时查询更新连接数目最大值 – 用户连接最大值</li>
+</ul>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><ul>
+<li>如果有需要删除mysql原有版本 可以<a target="_blank" rel="noopener" href="https://blog.csdn.net/managementandjava/article/details/80039650">参考此文章</a></li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>MySql 安装 使用</p><p><a href="http://blog.pp6f.com/2022/04/02/Dev/mysql/">http://blog.pp6f.com/2022/04/02/Dev/mysql/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-04-02</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a><a class="icons" rel="noopener" target="_blank" title="ShareAlike" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="icon fab fa-creative-commons-sa"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/MySql/">MySql</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62075f04049246001a1511a9&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/donate/alipay.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/donate/wechat.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/03/31/Dev/nginx-log/"><span class="level-item">nginx 日志</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="binbruce/blog.pp6f.github.io" issue-term="pathname" label="some-issue-label" theme="github-light" crossorigin="anonymous" async></script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Bruce"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bruce</p><p class="is-size-6 is-block">Bruce&#039;s Blog</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">19</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">23</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/binbruce" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/binbruce"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Google" href="https://google.com/"><i class="fab fa-google"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#索引"><span class="level-left"><span class="level-item">1</span><span class="level-item">索引</span></span></a></li><li><a class="level is-mobile" href="#前言"><span class="level-left"><span class="level-item">2</span><span class="level-item">前言</span></span></a></li><li><a class="level is-mobile" href="#官网下载-安装MySql"><span class="level-left"><span class="level-item">3</span><span class="level-item">官网下载 安装MySql</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#CentOS-安装MySql"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">CentOS 安装MySql</span></span></a></li></ul></li><li><a class="level is-mobile" href="#使用-MySql"><span class="level-left"><span class="level-item">4</span><span class="level-item">使用 MySql</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#启动mysql服务-和-常用命令"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">启动mysql服务 和 常用命令</span></span></a></li><li><a class="level is-mobile" href="#获取-mysql-初始密码"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">获取 mysql 初始密码</span></span></a></li><li><a class="level is-mobile" href="#配置文件"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">配置文件</span></span></a></li><li><a class="level is-mobile" href="#Mysql日志默认存放位置"><span class="level-left"><span class="level-item">4.4</span><span class="level-item">Mysql日志默认存放位置</span></span></a></li><li><a class="level is-mobile" href="#Mysql数据库默认存放位置"><span class="level-left"><span class="level-item">4.5</span><span class="level-item">Mysql数据库默认存放位置</span></span></a></li><li><a class="level is-mobile" href="#登录MySql"><span class="level-left"><span class="level-item">4.6</span><span class="level-item">登录MySql</span></span></a></li><li><a class="level is-mobile" href="#查看默认端口"><span class="level-left"><span class="level-item">4.7</span><span class="level-item">查看默认端口</span></span></a></li><li><a class="level is-mobile" href="#修改默认端口"><span class="level-left"><span class="level-item">4.8</span><span class="level-item">修改默认端口</span></span></a></li><li><a class="level is-mobile" href="#开启-mysql-远程服务"><span class="level-left"><span class="level-item">4.9</span><span class="level-item">开启 mysql 远程服务</span></span></a></li><li><a class="level is-mobile" href="#使用授权的方式"><span class="level-left"><span class="level-item">4.10</span><span class="level-item">使用授权的方式</span></span></a></li><li><a class="level is-mobile" href="#创建用户"><span class="level-left"><span class="level-item">4.11</span><span class="level-item">创建用户</span></span></a></li><li><a class="level is-mobile" href="#授权"><span class="level-left"><span class="level-item">4.12</span><span class="level-item">授权</span></span></a></li><li><a class="level is-mobile" href="#更改数据库默认数据文件路径"><span class="level-left"><span class="level-item">4.13</span><span class="level-item">更改数据库默认数据文件路径</span></span></a></li><li><a class="level is-mobile" href="#修改默认日志文件"><span class="level-left"><span class="level-item">4.14</span><span class="level-item">修改默认日志文件</span></span></a></li><li><a class="level is-mobile" href="#常用sql语句"><span class="level-left"><span class="level-item">4.15</span><span class="level-item">常用sql语句</span></span></a></li></ul></li><li><a class="level is-mobile" href="#数据库工具"><span class="level-left"><span class="level-item">5</span><span class="level-item">数据库工具</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#SQLyog-工具"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">SQLyog 工具</span></span></a></li></ul></li><li><a class="level is-mobile" href="#链接"><span class="level-left"><span class="level-item">6</span><span class="level-item">链接</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Dev/"><span class="level-start"><span class="level-item">Dev</span></span><span class="level-end"><span class="level-item tag">8</span></span></a><ul><li><a class="level is-mobile" href="/categories/Dev/Net-Core/"><span class="level-start"><span class="level-item">.Net Core</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/MySql/"><span class="level-start"><span class="level-item">MySql</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Next-js/"><span class="level-start"><span class="level-item">Next.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Nginx/"><span class="level-start"><span class="level-item">Nginx</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Node-js/"><span class="level-start"><span class="level-item">Node.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Git/"><span class="level-start"><span class="level-item">Git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/GitHub/"><span class="level-start"><span class="level-item">GitHub</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/System/"><span class="level-start"><span class="level-item">System</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/categories/System/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/Windows/"><span class="level-start"><span class="level-item">Windows</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F/"><span class="level-start"><span class="level-item">路由系统</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Tools/"><span class="level-start"><span class="level-item">Tools</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/categories/Tools/SSH/"><span class="level-start"><span class="level-item">SSH</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-02T17:05:08.000Z">2022-04-02</time></p><p class="title"><a href="/2022/04/02/Dev/mysql/">MySql 安装 使用</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/MySql/">MySql</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-31T01:51:11.000Z">2022-03-31</time></p><p class="title"><a href="/2022/03/31/Dev/nginx-log/">nginx 日志</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T20:30:21.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx-conf/">配置 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T15:08:09.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx/">CentOS 安装 使用 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T14:27:54.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/netcore/">CentOS安装 .NET Core 运行环境 并运行 .NET Core 程序</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Net-Core/">.Net Core</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">二月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Article/"><span class="tag">Article</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C#</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Dev/"><span class="tag">Dev</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Encrypt/"><span class="tag">Encrypt</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Actions/"><span class="tag">Github Actions</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Desktop/"><span class="tag">Github Desktop</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo-Theme/"><span class="tag">Hexo Theme</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySql/"><span class="tag">MySql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Net-Core/"><span class="tag">Net Core</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Node-js/"><span class="tag">Node.js</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Openwrt/"><span class="tag">Openwrt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SSH/"><span class="tag">SSH</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/System/"><span class="tag">System</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ubuntu/"><span class="tag">Ubuntu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Windows/"><span class="tag">Windows</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Bruce's Blog</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客, <span id="busuanzi_value_site_pv">0</span>次访问</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/binbruce"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script src="/js/night.js" defer></script><script>if (true == true) {
+			$(document).ready(function () {
+				var int = setInterval(fixCount, 100);
+				var uvOffSet = parseInt(13900);
+				var pvOffSet = parseInt(31900);
+				
+				function fixCount() {
+					var realUv = parseInt($("#busuanzi_value_site_uv").html())
+					var realPv = parseInt($("#busuanzi_value_site_pv").html())
+					if ($("#busuanzi_container_site_uv").css("display") != "none" && realUv > 0) {
+						clearInterval(int);
+						$("#busuanzi_value_site_uv").html(realUv + uvOffSet);
+						$("#busuanzi_value_site_pv").html(realPv + pvOffSet);
+					}
+				}
+			});
+		}</script>           <div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

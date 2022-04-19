@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Hexo创建Markdown格式文章 - Bruce&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bruce"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bruce"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="索引 索引  前言  创建文章  编辑文章  Markdown标记规则  标题 段落 字体 分割线 删除线 下划线 无序和有序列表 区块引用 代码块 链接 图片 表格 HTML 转义 思维导图 markdown和github支持 markmap插件 其他插件     End  本文基于Hexo静态网页生成器，使用Icarus主题，为基础环境。如果你还没有使用 可以参考 Hexo安装与使用及遇到的问"><meta property="og:type" content="blog"><meta property="og:title" content="Hexo创建Markdown格式文章"><meta property="og:url" content="http://blog.pp6f.com/2022/02/20/Hexo/Hexo-Article/"><meta property="og:site_name" content="Bruce&#039;s Blog"><meta property="og:description" content="索引 索引  前言  创建文章  编辑文章  Markdown标记规则  标题 段落 字体 分割线 删除线 下划线 无序和有序列表 区块引用 代码块 链接 图片 表格 HTML 转义 思维导图 markdown和github支持 markmap插件 其他插件     End  本文基于Hexo静态网页生成器，使用Icarus主题，为基础环境。如果你还没有使用 可以参考 Hexo安装与使用及遇到的问"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.pp6f.com/img/og_image.png"><meta property="article:published_time" content="2022-02-20T22:25:48.000Z"><meta property="article:modified_time" content="2022-04-19T20:45:41.320Z"><meta property="article:author" content="Bruce"><meta property="article:tag" content="Article"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.pp6f.com/2022/02/20/Hexo/Hexo-Article/"},"headline":"Hexo创建Markdown格式文章","image":["http://blog.pp6f.com/img/og_image.png"],"datePublished":"2022-02-20T22:25:48.000Z","dateModified":"2022-04-19T20:45:41.320Z","author":{"@type":"Person","name":"Bruce"},"publisher":{"@type":"Organization","name":"Bruce's Blog","logo":{"@type":"ImageObject","url":"http://blog.pp6f.com/img/logo.png"}},"description":"索引 索引  前言  创建文章  编辑文章  Markdown标记规则  标题 段落 字体 分割线 删除线 下划线 无序和有序列表 区块引用 代码块 链接 图片 表格 HTML 转义 思维导图 markdown和github支持 markmap插件 其他插件     End  本文基于Hexo静态网页生成器，使用Icarus主题，为基础环境。如果你还没有使用 可以参考 Hexo安装与使用及遇到的问"}</script><link rel="canonical" href="http://blog.pp6f.com/2022/02/20/Hexo/Hexo-Article/"><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?1216c36d0c1f22cc295e5fb60b670b9b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-5RZTMS5D40" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-5RZTMS5D40');</script><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+        <script>
+            function switchTab(element) {
+                const id = element.parentElement.id;
+                const tabElements = element.parentElement.parentElement.children;
+                const contentElements = element.parentElement.parentElement.parentElement.parentElement.children[1].children;
+                for (let i = 0; i < tabElements.length; i++) {
+                    const $tab = tabElements[i];
+                    const $content = contentElements[i];
+                    if ($tab.id === id) {
+                        $tab.classList.add('is-active');
+                    } else {
+                        $tab.classList.remove('is-active');
+                    }
+                    if ($content.id === id) {
+                        $content.classList.remove('is-hidden');
+                    } else {
+                        $content.classList.add('is-hidden');
+                    }
+                }
+            }
+        </script>
+        <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" target="_blank" rel="noopener" href="https://pp6f.com">主页</a><a class="navbar-item" href="/">博客</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">我</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-lightbulb" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item copyright article-title type-2">原创</span><span class="level-item"><time dateTime="2022-02-20T22:25:48.000Z" title="2/20/2022, 10:25:48 PM">2022-02-20</time>发表</span><span class="level-item"><time dateTime="2022-04-19T20:45:41.320Z" title="4/19/2022, 8:45:41 PM">2022-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Hexo/">Hexo</a></span><span class="level-item">12 分钟读完 (大约1814个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Hexo创建Markdown格式文章</h1><div class="copyright article-block type-2"><p>版权申明：本文为原创文章，转载请注明原文出处</p><p>原文链接：<a href="http://blog.pp6f.com/2022/02/20/Hexo/Hexo-Article/" target="_blank">http://blog.pp6f.com/2022/02/20/Hexo/Hexo-Article/</a></p></div><div class="content"><h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><ul>
+<li><p><a href="#%E7%B4%A2%E5%BC%95">索引</a></p>
+</li>
+<li><p><a href="#%E5%89%8D%E8%A8%80"><strong>前言</strong></a></p>
+</li>
+<li><p><a href="#%E5%88%9B%E5%BB%BA%E6%96%87%E7%AB%A0"><strong>创建文章</strong></a></p>
+</li>
+<li><p><a href="#%E7%BC%96%E8%BE%91%E6%96%87%E7%AB%A0"><strong>编辑文章</strong></a></p>
+</li>
+<li><p><a href="#markdown%E6%A0%87%E8%AE%B0%E8%A7%84%E5%88%99"><strong>Markdown标记规则</strong></a></p>
+<ul>
+<li><a href="#%E6%A0%87%E9%A2%98"><strong>标题</strong></a></li>
+<li><a href="#%E6%AE%B5%E8%90%BD"><strong>段落</strong></a></li>
+<li><a href="#%E5%AD%97%E4%BD%93"><strong>字体</strong></a></li>
+<li><a href="#%E5%88%86%E5%89%B2%E7%BA%BF"><strong>分割线</strong></a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E7%BA%BF"><strong>删除线</strong></a></li>
+<li><a href="#%E4%B8%8B%E5%88%92%E7%BA%BF"><strong>下划线</strong></a></li>
+<li><a href="#%E6%97%A0%E5%BA%8F%E5%92%8C%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><strong>无序和有序列表</strong></a></li>
+<li><a href="#%E5%8C%BA%E5%9D%97%E5%BC%95%E7%94%A8"><strong>区块引用</strong></a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><strong>代码块</strong></a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5"><strong>链接</strong></a></li>
+<li><a href="#%E5%9B%BE%E7%89%87"><strong>图片</strong></a></li>
+<li><a href="#%E8%A1%A8%E6%A0%BC"><strong>表格</strong></a></li>
+<li><a href="#html"><strong>HTML</strong></a></li>
+<li><a href="#%E8%BD%AC%E4%B9%89"><strong>转义</strong></a></li>
+<li><a href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><strong>思维导图</strong></a><ul>
+<li><a href="#markdown%E5%92%8Cgithub%E6%94%AF%E6%8C%81"><strong>markdown和github支持</strong></a></li>
+<li><a href="#markmap%E6%8F%92%E4%BB%B6"><strong>markmap插件</strong></a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E6%8F%92%E4%BB%B6">其他插件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="#end">End</a></p>
+</li>
+<li><p>本文基于Hexo静态网页生成器，使用Icarus主题，为基础环境。<br>如果你还没有使用 可以参考 <a href="https://blog.pp6f.com/2022/02/15/Hexo_FAQ/">Hexo安装与使用及遇到的问题</a> 和 <a href="https://blog.pp6f.com/categories/Hexo/">有关Hexo的其他文章</a></p>
+</li>
+<li><p>在这里你可以了解到，如何 创建 编辑 文章。</p>
+</li>
+<li><p>Markdown格式的书写方式 规则等等。</p>
+</li>
+</ul>
+<span id="more"></span>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h1><ul>
+<li>Hexo将解析Markdown格式文章。</li>
+<li>我们只需要创建Markdown格式文件，Hexo会自动解析成静态网页。</li>
+<li>Markdown是轻量级的标记语言 在书写上非常简洁 方便 高效。 更多资料可以参考<a target="_blank" rel="noopener" href="https://www.markdownguide.org/">Markdown指南</a> <a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">Markdown教程</a></li>
+</ul>
+<h1 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a><strong>创建文章</strong></h1><ul>
+<li><p>创建文章的方式有两种<br>1 在博客目录的<code>source\_posts</code>文件夹创建后缀为<code>.md</code>的文件<br>直接创建文件 很方便 但是需要自己来编写<code>Front-matter</code>的每一项<br>2 通过<code>Hexo new</code>命令创建文章。<br>这个方法的好处在于，可以根据模板来创建，很多<code>Front-matter</code>可以自动生成。<br>所以通常使用第2种方式来创建</p>
+</li>
+<li><p>首先 打开博客目录的<code>scaffolds</code>文件夹 找到<code>post.md</code>文件打开 这个是模板文件<br>输入以下代码保存。 更多可以参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">Hexo官网文档</a> <a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/Configuration/icarus%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/#Open-Graph">Icarus官方文档</a></p>
+<figure class="highlight yml"><figcaption><span>scaffolds\post.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># 文章的标题</span></span><br><span class="line"><span class="attr">title:</span> &#123;&#123; <span class="string">title</span> &#125;&#125;</span><br><span class="line"><span class="comment"># 创建时间</span></span><br><span class="line"><span class="attr">date:</span> &#123;&#123; <span class="string">date</span> &#125;&#125;</span><br><span class="line"><span class="comment"># 更新时间</span></span><br><span class="line"><span class="attr">updated:</span> </span><br><span class="line"><span class="comment"># 分类</span></span><br><span class="line"><span class="attr">categories:</span> </span><br><span class="line"><span class="comment"># 标签</span></span><br><span class="line"><span class="attr">tags:</span> </span><br><span class="line"><span class="comment"># 布局</span></span><br><span class="line"><span class="attr">layout:</span></span><br><span class="line"><span class="comment"># 作者</span></span><br><span class="line"><span class="attr">author:</span> </span><br><span class="line"><span class="comment"># 语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-cn</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># === 以下项 根据主题不同可能项名称也不同 以下为Icarus使用的项</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文章封面图片</span></span><br><span class="line"><span class="attr">cover:</span> </span><br><span class="line"><span class="comment"># 小的缩略图</span></span><br><span class="line"><span class="attr">thumbnail:</span> </span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="string">封面内容</span> <span class="string">通常在这里编辑文章的介绍</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;!--more--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">文章内容</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 前言</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 目录</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 正文</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 结束</span></span><br></pre></td></tr></table></figure></li>
+<li><p>创建好模板后，就可以在命令行新建文章了。在博客目录打开命令行工具。</p>
+<pre><code>  $ hexo new article_name
+</code></pre>
+</li>
+<li><p>运行成功后 找到<code>source\_posts\article_name.md</code>就是更改新建文章的markdown文件</p>
+<blockquote>
+<p>文章的<code>文件名</code>和<code>title</code>可以是不同的。</p>
+</blockquote>
+</li>
+<li><p>文章创建好了，下一章了解如何编辑markdown格式的文章。</p>
+</li>
+</ul>
+<h1 id="编辑文章"><a href="#编辑文章" class="headerlink" title="编辑文章"></a><strong>编辑文章</strong></h1><ul>
+<li>首先编辑文件头</li>
+<li>然后编辑<code>&lt;!--more--&gt;</code>之前的字符 作为封面介绍</li>
+<li>在<code>&lt;!--more--&gt;</code>之后即为文章的正文了</li>
+</ul>
+<h1 id="Markdown标记规则"><a href="#Markdown标记规则" class="headerlink" title="Markdown标记规则"></a><strong>Markdown标记规则</strong></h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a><strong>标题</strong></h2><ul>
+<li><p>可以使用<code>#</code>来标记 1-6 级的标题 <code>#</code>号越多字体标题等级越低</p>
+<pre><code>  # 一级标题
+  ## 二级标题
+  ### 三级标题
+  #### 四级标题
+  ##### 五级标题
+  ###### 六级标题
+</code></pre>
+</li>
+</ul>
+<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a><strong>段落</strong></h2><ul>
+<li>使用两行回车来标记段落</li>
+</ul>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a><strong>字体</strong></h2><ul>
+<li><p>在字符的前后加上<code>* _</code>来标记字体<br>  <em>斜体文本</em><br>  <em>斜体文本</em><br>  <strong>粗体文本</strong><br>  <strong>粗体文本</strong><br>  <em><strong>粗斜体文本</strong></em><br>  <em><strong>粗斜体文本</strong></em></p>
+<pre><code>  *斜体文本*
+  _斜体文本_
+  **粗体文本**
+  __粗体文本__
+  ***粗斜体文本***
+  ___粗斜体文本___
+</code></pre>
+</li>
+</ul>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a><strong>分割线</strong></h2><ul>
+<li><p>在一个空行使用三个以上的<code>* -</code>字符来标记分割线</p>
+<pre><code>  ***
+  * * *
+  *****
+  ----
+  - - -
+</code></pre>
+</li>
+</ul>
+<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a><strong>删除线</strong></h2><ul>
+<li><p>在需要使用的字符前后加上2个<code>~</code>号<br><del>abc</del></p>
+<pre><code>  ~~abc~~
+</code></pre>
+</li>
+</ul>
+<h2 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a><strong>下划线</strong></h2><ul>
+<li><p>要在字符上使用下划线 需要使用HTML标签<br><u>带下划线字符</u></p>
+<pre><code>  &lt;u&gt;带下划线字符&lt;/u&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="无序和有序列表"><a href="#无序和有序列表" class="headerlink" title="无序和有序列表"></a><strong>无序和有序列表</strong></h2><ul>
+<li><p>在字符前加符号<code>+ * -</code>任意字符和一个空格 为无序列表</p>
+<pre><code>  - 123
+  * abc
+  + 123
+</code></pre>
+</li>
+<li><p>在字符前加数字<code>1. 2. 3.</code>和一个空格 为有序列表</p>
+<pre><code>  1. abc
+  2. 123
+  3. abc
+</code></pre>
+</li>
+<li><p>列表之间可以嵌套使用</p>
+<pre><code>  1. abc
+      - 123
+      - 456
+  2. 123
+      - abc
+</code></pre>
+</li>
+</ul>
+<h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a><strong>区块引用</strong></h2><ul>
+<li><p>在字符前加<code>&gt;</code>和一个空格</p>
+<blockquote>
+<p>这是区块引用</p>
+</blockquote>
+<pre><code>  &gt; 这是使用区块引用的方法
+</code></pre>
+</li>
+<li><p>还可以使用多层嵌套</p>
+<blockquote>
+<p>这时第一层</p>
+<blockquote>
+<p>这时第二层</p>
+<blockquote>
+<p>这时第三层</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>  &gt; 这时第一层
+  &gt; &gt; 这时第二层
+  &gt; &gt; &gt; 这时第三层
+</code></pre>
+</li>
+<li><p>还可以组合使用</p>
+<pre><code>  &gt; 区块中使用列表
+  &gt; 1. 第一项
+  &gt; 2. 第二项
+  &gt; + 第一项
+  &gt; + 第二项
+  &gt; + 第三项
+</code></pre>
+<blockquote>
+<p>区块中使用列表</p>
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+</ol>
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a><strong>代码块</strong></h2><ul>
+<li><p>一些简单的语句可以在字符前后加上<code> ` </code>反引号 标记这是代码</p>
+</li>
+<li><p>在字符前可以使用一个制表符(Tab键)或四个空格 来标记代码块<br>如果有层级关系需要按层级加制表符</p>
+<pre><code>  这是代码块
+</code></pre>
+</li>
+<li><p>还可以使用 <code>```</code> 将代码块包裹起来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">funciton</span>(<span class="params"></span>)&#123;</span><br><span class="line">    a = a + <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>  |   ```js
+  |   funciton()&#123;
+  |       a = a + 1
+  |   &#125;
+  |   ```
+</code></pre>
+</li>
+<li><p>语言可以支持很多种 <code>js diff yml css</code> 等等。。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/syntax-highlight">Hexo</a>对代码块进行了扩展 以实现更多的功能 更多可以参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/syntax-highlight">Hexo代码高亮文档</a></p>
+<pre><code>  |    ``` [language] [title] [url] [link text] [additional options]
+  |        code snippet
+  |    ```
+</code></pre>
+</li>
+<li><p>Icarus还支持了 增加 <code>&gt;folded</code> 初始折叠功能</p>
+</li>
+</ul>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a><strong>链接</strong></h2><ul>
+<li><p>给字符添加链接 例：<a href="https://blog.pp6f.com/">我的博客</a> <a href="https://blog.pp6f.com/">https://blog.pp6f.com/</a></p>
+<pre><code>  [字符](链接地址)
+  or
+  &lt;https://blog.pp6f.com/&gt;
+</code></pre>
+</li>
+<li><p>还可以定义链接变量 <a href="https://blog.pp6f.com/">我的博客</a></p>
+<pre><code>  [我的博客][我的博客链接]
+  [我的博客链接]: https://blog.pp6f.com/
+</code></pre>
+</li>
+</ul>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a><strong>图片</strong></h2><ul>
+<li>添加一个图片可以使用<br><code>![alt属性文本](图片URL地址)</code><br><code>![alt属性文本](图片URL地址 &quot;标题&quot;)</code></li>
+<li>也可以使用定义图片URL变量使用 类似链接的变量定义</li>
+<li>还可以使用HTML标签语言<br><code>&lt;img scr=图片URL地址 width=&quot;100%&quot; height=&quot;100%&quot;&gt;</code></li>
+</ul>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a><strong>表格</strong></h2><ul>
+<li><p>制作表格非常简单 一目了然 没什么可说的 哈哈</p>
+<pre><code>  | 左对齐 | 右对齐 | 居中对齐 |
+  | :---- | ------: | :------: |
+  | 单元格 | 单元格 | 单元格 |
+  | 单元格 | 单元格 | 单元格 |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">左对齐</th>
+<th align="right">右对齐</th>
+<th align="center">居中对齐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+<td align="center">单元格</td>
+</tr>
+<tr>
+<td align="left">单元格</td>
+<td align="right">单元格</td>
+<td align="center">单元格</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a><strong>HTML</strong></h2><ul>
+<li>归根结底markdown的原理还是属于HTML标签语言的范畴，所以markdown完美的支持HTML元素。在一些不能满足需要的地方，可以直接嵌入HTML元素来解决<br>例：<article class="message is-primary" style="font-size:0.5em">
+<div class="message-body">
+添加HTML元素
+</div>
+</article>
+
+<pre><code>  &lt;article class=&quot;message is-primary&quot; style=&quot;font-size:0.5em&quot;&gt;
+  &lt;div class=&quot;message-body&quot;&gt;
+  添加HTML元素
+  &lt;/div&gt;
+  &lt;/article&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a><strong>转义</strong></h2><ul>
+<li><p>markdown使用了很多特殊字符 当需要输入这些字符的时候 可以使用反斜杠<code>\</code>来转义<br>  <strong>abc</strong><br>  **abc**</p>
+<pre><code>  **abc**
+  \*\*abc\*\*
+</code></pre>
+</li>
+</ul>
+<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a><strong>思维导图</strong></h2><h3 id="markdown和github支持"><a href="#markdown和github支持" class="headerlink" title="markdown和github支持"></a><strong>markdown和github支持</strong></h3><ul>
+<li>竖行显示<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(根)--&gt;B1(项1)</span><br><span class="line">A--&gt;B2(项2)</span><br></pre></td></tr></table></figure></li>
+<li>横向显示<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(根)--&gt;B1(项1)</span><br><span class="line">A--&gt;B2(项2)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="markmap插件"><a href="#markmap插件" class="headerlink" title="markmap插件"></a><strong>markmap插件</strong></h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/MaxChang3/hexo-markmap#readme">Github markmap仓库</a></p>
+</li>
+<li><p>安装</p>
+<pre><code>npm install hexo-markmap
+</code></pre>
+</li>
+<li><p>参数</p>
+<ul>
+<li>height: 画布高度</li>
+<li>depth: 可选，自动折叠层数深于depth的节点</li>
+</ul>
+</li>
+<li><p>使用方法</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% markmap height [depth] %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例</p>
+<ul>
+<li>代码  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% markmap 300px %&#125;</span><br><span class="line">- Testa</span><br><span class="line">  - test1</span><br><span class="line">  - test2</span><br><span class="line">- Testb</span><br><span class="line">  - test1</span><br><span class="line">  - test2</span><br><span class="line">&#123;%endmarkmap%&#125;</span><br></pre></td></tr></table></figure></li>
+<li>效果  
+    <div class="markmap-container" style="height:300px">
+      <svg data='{"t":"root","d":0,"v":"","c":[{"t":"list_item","d":2,"p":{"lines":[0,1]},"v":"Testa","c":[{"t":"list_item","d":4,"p":{"lines":[1,2]},"v":"test1"},{"t":"list_item","d":4,"p":{"lines":[2,3]},"v":"test2"}]},{"t":"list_item","d":2,"p":{"lines":[3,4]},"v":"Testb","c":[{"t":"list_item","d":4,"p":{"lines":[4,5]},"v":"test1"},{"t":"list_item","d":4,"p":{"lines":[5,6]},"v":"test2"}]}],"p":{}}'></svg>
+    </div>
+  </li>
+</ul>
+</li>
+</ul>
+<h3 id="其他插件"><a href="#其他插件" class="headerlink" title="其他插件"></a>其他插件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/HunterXuan/hexo-simple-mindmap">hexo-simple-mindmap</a></li>
+</ul>
+<h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1>
+    <style>.markmap-container{display:flex;justify-content:center;margin:0 auto;width:90%;height:500px}.markmap-container svg{width:100%;height:100%}@media(max-width:768px){.markmap-container{height:400px}}</style>
+    <script src="https://cdn.jsdelivr.net/npm/d3@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view"></script>
+    <script> document.querySelectorAll('.markmap-container>svg').forEach(mindmap => markmap.Markmap.create(mindmap, null, JSON.parse(mindmap.getAttribute('data'))))</script>
+  </div><div class="article-licensing box"><div class="licensing-title"><p>Hexo创建Markdown格式文章</p><p><a href="http://blog.pp6f.com/2022/02/20/Hexo/Hexo-Article/">http://blog.pp6f.com/2022/02/20/Hexo/Hexo-Article/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Bruce</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-02-20</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a><a class="icons" rel="noopener" target="_blank" title="ShareAlike" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="icon fab fa-creative-commons-sa"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Article/">Article</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62075f04049246001a1511a9&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/donate/alipay.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/donate/wechat.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/02/24/Dev/nextjs/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Next.js 笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/02/19/Dev/Nodejs/"><span class="level-item">Node.js在各系统的安装</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="binbruce/blog.pp6f.github.io" issue-term="pathname" label="some-issue-label" theme="github-light" crossorigin="anonymous" async></script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Bruce"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bruce</p><p class="is-size-6 is-block">Bruce&#039;s Blog</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">19</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">23</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/binbruce" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/binbruce"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Google" href="https://google.com/"><i class="fab fa-google"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#索引"><span class="level-left"><span class="level-item">1</span><span class="level-item">索引</span></span></a></li><li><a class="level is-mobile" href="#前言"><span class="level-left"><span class="level-item">2</span><span class="level-item">前言</span></span></a></li><li><a class="level is-mobile" href="#创建文章"><span class="level-left"><span class="level-item">3</span><span class="level-item">创建文章</span></span></a></li><li><a class="level is-mobile" href="#编辑文章"><span class="level-left"><span class="level-item">4</span><span class="level-item">编辑文章</span></span></a></li><li><a class="level is-mobile" href="#Markdown标记规则"><span class="level-left"><span class="level-item">5</span><span class="level-item">Markdown标记规则</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#标题"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">标题</span></span></a></li><li><a class="level is-mobile" href="#段落"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">段落</span></span></a></li><li><a class="level is-mobile" href="#字体"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">字体</span></span></a></li><li><a class="level is-mobile" href="#分割线"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">分割线</span></span></a></li><li><a class="level is-mobile" href="#删除线"><span class="level-left"><span class="level-item">5.5</span><span class="level-item">删除线</span></span></a></li><li><a class="level is-mobile" href="#下划线"><span class="level-left"><span class="level-item">5.6</span><span class="level-item">下划线</span></span></a></li><li><a class="level is-mobile" href="#无序和有序列表"><span class="level-left"><span class="level-item">5.7</span><span class="level-item">无序和有序列表</span></span></a></li><li><a class="level is-mobile" href="#区块引用"><span class="level-left"><span class="level-item">5.8</span><span class="level-item">区块引用</span></span></a></li><li><a class="level is-mobile" href="#代码块"><span class="level-left"><span class="level-item">5.9</span><span class="level-item">代码块</span></span></a></li><li><a class="level is-mobile" href="#链接"><span class="level-left"><span class="level-item">5.10</span><span class="level-item">链接</span></span></a></li><li><a class="level is-mobile" href="#图片"><span class="level-left"><span class="level-item">5.11</span><span class="level-item">图片</span></span></a></li><li><a class="level is-mobile" href="#表格"><span class="level-left"><span class="level-item">5.12</span><span class="level-item">表格</span></span></a></li><li><a class="level is-mobile" href="#HTML"><span class="level-left"><span class="level-item">5.13</span><span class="level-item">HTML</span></span></a></li><li><a class="level is-mobile" href="#转义"><span class="level-left"><span class="level-item">5.14</span><span class="level-item">转义</span></span></a></li><li><a class="level is-mobile" href="#思维导图"><span class="level-left"><span class="level-item">5.15</span><span class="level-item">思维导图</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#markdown和github支持"><span class="level-left"><span class="level-item">5.15.1</span><span class="level-item">markdown和github支持</span></span></a></li><li><a class="level is-mobile" href="#markmap插件"><span class="level-left"><span class="level-item">5.15.2</span><span class="level-item">markmap插件</span></span></a></li><li><a class="level is-mobile" href="#其他插件"><span class="level-left"><span class="level-item">5.15.3</span><span class="level-item">其他插件</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#End"><span class="level-left"><span class="level-item">6</span><span class="level-item">End</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Dev/"><span class="level-start"><span class="level-item">Dev</span></span><span class="level-end"><span class="level-item tag">8</span></span></a><ul><li><a class="level is-mobile" href="/categories/Dev/Net-Core/"><span class="level-start"><span class="level-item">.Net Core</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/MySql/"><span class="level-start"><span class="level-item">MySql</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Next-js/"><span class="level-start"><span class="level-item">Next.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Nginx/"><span class="level-start"><span class="level-item">Nginx</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Node-js/"><span class="level-start"><span class="level-item">Node.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Git/"><span class="level-start"><span class="level-item">Git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/GitHub/"><span class="level-start"><span class="level-item">GitHub</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/System/"><span class="level-start"><span class="level-item">System</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/categories/System/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/Windows/"><span class="level-start"><span class="level-item">Windows</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F/"><span class="level-start"><span class="level-item">路由系统</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Tools/"><span class="level-start"><span class="level-item">Tools</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/categories/Tools/SSH/"><span class="level-start"><span class="level-item">SSH</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-02T17:05:08.000Z">2022-04-02</time></p><p class="title"><a href="/2022/04/02/Dev/mysql/">MySql 安装 使用</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/MySql/">MySql</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-31T01:51:11.000Z">2022-03-31</time></p><p class="title"><a href="/2022/03/31/Dev/nginx-log/">nginx 日志</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T20:30:21.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx-conf/">配置 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T15:08:09.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx/">CentOS 安装 使用 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T14:27:54.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/netcore/">CentOS安装 .NET Core 运行环境 并运行 .NET Core 程序</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Net-Core/">.Net Core</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">二月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Article/"><span class="tag">Article</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C#</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Dev/"><span class="tag">Dev</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Encrypt/"><span class="tag">Encrypt</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Actions/"><span class="tag">Github Actions</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Desktop/"><span class="tag">Github Desktop</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo-Theme/"><span class="tag">Hexo Theme</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySql/"><span class="tag">MySql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Net-Core/"><span class="tag">Net Core</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Node-js/"><span class="tag">Node.js</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Openwrt/"><span class="tag">Openwrt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SSH/"><span class="tag">SSH</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/System/"><span class="tag">System</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ubuntu/"><span class="tag">Ubuntu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Windows/"><span class="tag">Windows</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Bruce</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客, <span id="busuanzi_value_site_pv">0</span>次访问</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/binbruce"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script src="/js/night.js" defer></script><script>if (true == true) {
+			$(document).ready(function () {
+				var int = setInterval(fixCount, 100);
+				var uvOffSet = parseInt(13900);
+				var pvOffSet = parseInt(31900);
+				
+				function fixCount() {
+					var realUv = parseInt($("#busuanzi_value_site_uv").html())
+					var realPv = parseInt($("#busuanzi_value_site_pv").html())
+					if ($("#busuanzi_container_site_uv").css("display") != "none" && realUv > 0) {
+						clearInterval(int);
+						$("#busuanzi_value_site_uv").html(realUv + uvOffSet);
+						$("#busuanzi_value_site_pv").html(realPv + pvOffSet);
+					}
+				}
+			});
+		}</script>           <div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Linux - Bruce&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bruce"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bruce"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="~"><meta property="og:type" content="blog"><meta property="og:title" content="Linux"><meta property="og:url" content="http://blog.pp6f.com/2022/03/10/System/Linux/"><meta property="og:site_name" content="Bruce&#039;s Blog"><meta property="og:description" content="~"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.pp6f.com/img/og_image.png"><meta property="article:published_time" content="2022-03-10T12:50:15.000Z"><meta property="article:modified_time" content="2022-04-19T20:45:41.324Z"><meta property="article:tag" content="Ubuntu"><meta property="article:tag" content="Linux"><meta property="article:tag" content="System"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.pp6f.com/2022/03/10/System/Linux/"},"headline":"Linux","image":["http://blog.pp6f.com/img/og_image.png"],"datePublished":"2022-03-10T12:50:15.000Z","dateModified":"2022-04-19T20:45:41.324Z","author":{"@type":"Person","name":null},"publisher":{"@type":"Organization","name":"Bruce's Blog","logo":{"@type":"ImageObject","url":"http://blog.pp6f.com/img/logo.png"}},"description":"~"}</script><link rel="canonical" href="http://blog.pp6f.com/2022/03/10/System/Linux/"><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?1216c36d0c1f22cc295e5fb60b670b9b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-5RZTMS5D40" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-5RZTMS5D40');</script><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+        <script>
+            function switchTab(element) {
+                const id = element.parentElement.id;
+                const tabElements = element.parentElement.parentElement.children;
+                const contentElements = element.parentElement.parentElement.parentElement.parentElement.children[1].children;
+                for (let i = 0; i < tabElements.length; i++) {
+                    const $tab = tabElements[i];
+                    const $content = contentElements[i];
+                    if ($tab.id === id) {
+                        $tab.classList.add('is-active');
+                    } else {
+                        $tab.classList.remove('is-active');
+                    }
+                    if ($content.id === id) {
+                        $content.classList.remove('is-hidden');
+                    } else {
+                        $content.classList.add('is-hidden');
+                    }
+                }
+            }
+        </script>
+        <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" target="_blank" rel="noopener" href="https://pp6f.com">主页</a><a class="navbar-item" href="/">博客</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">我</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-lightbulb" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item copyright article-title type-2">原创</span><span class="level-item"><time dateTime="2022-03-10T12:50:15.000Z" title="3/10/2022, 12:50:15 PM">2022-03-10</time>发表</span><span class="level-item"><time dateTime="2022-04-19T20:45:41.324Z" title="4/19/2022, 8:45:41 PM">2022-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/System/">System</a><span> / </span><a class="link-muted" href="/categories/System/Linux/">Linux</a></span><span class="level-item">36 分钟读完 (大约5456个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Linux</h1><div class="copyright article-block type-2"><p>版权申明：本文为原创文章，转载请注明原文出处</p><p>原文链接：<a href="http://blog.pp6f.com/2022/03/10/System/Linux/" target="_blank">http://blog.pp6f.com/2022/03/10/System/Linux/</a></p></div><div class="content"><p>~</p>
+<span id="more"></span>
+
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><ul>
+<li><a href="#%E7%B4%A2%E5%BC%95">索引</a></li>
+<li><a href="#linux">Linux</a><ul>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%BD%91%E7%AB%99">相关网站</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%B3%BB%E7%BB%9F">相关系统</a></li>
+<li><a href="#%E5%AE%89%E5%85%A8%E5%A2%9E%E5%BC%BA%E5%9E%8Blinux">安全增强型linux</a></li>
+</ul>
+</li>
+<li><a href="#ubuntu">Ubuntu</a><ul>
+<li><a href="#apt-%E4%B8%8E-apt-get-%E5%91%BD%E4%BB%A4-%E7%94%A8%E4%BA%8E%E6%9B%B4%E6%96%B0%E8%BD%AF%E4%BB%B6">apt 与 apt-get 命令 用于更新软件</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8Cappimage%E6%96%87%E4%BB%B6">运行AppImage文件</a></li>
+<li><a href="#%E5%85%B3%E9%97%ADubuntu20-%E6%A1%8C%E9%9D%A2%E5%8A%A8%E7%94%BB-%E6%8F%90%E5%8D%87%E6%B5%81%E7%95%85%E6%80%A7">关闭Ubuntu20 桌面动画 提升流畅性</a></li>
+</ul>
+</li>
+<li><a href="#centos">CentOS</a><ul>
+<li><a href="#%E7%9B%B8%E5%85%B3%E7%BD%91%E7%AB%99-1">相关网站</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a><ul>
+<li><a href="#%E5%BC%80%E5%90%AFssh">开启SSH</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E7%BD%91%E5%8D%A1ip%E5%9C%B0%E5%9D%80">配置网卡IP地址</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8">添加开机启动</a></li>
+</ul>
+</li>
+<li><a href="#yum-%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7">yum 软件安装工具</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%8C%85%E7%AD%BE%E5%90%8D%E5%88%B0%E4%BF%A1%E4%BB%BB%E5%AF%86%E9%92%A5%E5%88%97%E8%A1%A8">添加包签名到信任密钥列表</a></li>
+<li><a href="#centos-7%E5%AE%89%E8%A3%85gnome-gui-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2">CentOS 7安装Gnome GUI 图形界面</a></li>
+<li><a href="#htop-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7">htop 进程管理查看工具</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">常用命令</a><ul>
+<li><a href="#sudo">sudo</a></li>
+<li><a href="#systemctl">systemctl</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2-%E5%88%87%E6%8D%A2">命令行&#x2F;图形界面 切换</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2%E7%95%8C%E9%9D%A2">切换界面</a></li>
+<li><a href="#ip-addr-%E8%8E%B7%E5%8F%96%E7%BD%91%E5%8D%A1%E4%BF%A1%E6%81%AF">ip addr 获取网卡信息</a></li>
+<li><a href="#echo">echo</a></li>
+<li><a href="#ln-%E5%88%9B%E5%BB%BA%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4">ln 创建软链接命令</a></li>
+<li><a href="#rm-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B9">rm 删除文件&#x2F;文件夹</a></li>
+<li><a href="#mkdir-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9">mkdir 创建文件夹</a></li>
+<li><a href="#pwd-%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E8%B7%AF%E5%BE%84">pwd 显示当前路径</a></li>
+<li><a href="#cd-%E8%BF%9B%E5%85%A5%E6%96%87%E4%BB%B6%E5%A4%B9">cd 进入文件夹</a></li>
+<li><a href="#lsdirll-%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%97%E8%A1%A8">ls&#x2F;dir&#x2F;ll 显示文件&#x2F;文件夹列表</a></li>
+<li><a href="#mv-%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6">mv 移动文件</a></li>
+<li><a href="#ps-%E6%9F%A5%E8%BF%9B%E7%A8%8B">ps 查进程</a></li>
+<li><a href="#kill-%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B">kill 杀死进程</a></li>
+<li><a href="#reboot-%E9%87%8D%E5%90%AF">reboot 重启</a></li>
+<li><a href="#poweroff-%E5%85%B3%E6%9C%BA">poweroff 关机</a></li>
+<li><a href="#sudo-passwd-%E6%9B%B4%E6%94%B9%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81">sudo passwd 更改当前用户密码</a></li>
+<li><a href="#top-linux%E7%B3%BB%E7%BB%9F%E7%8A%B6%E5%86%B5">top Linux系统状况</a></li>
+<li><a href="#free--m-%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8">free -m 查看内存占用</a></li>
+<li><a href="#df--h-%E6%9F%A5%E7%9C%8B%E7%A1%AC%E7%9B%98%E5%8D%A0%E7%94%A8%E7%8E%87">df -h 查看硬盘占用率</a></li>
+<li><a href="#whereis-%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4">whereis 搜索命令</a></li>
+<li><a href="#nohup-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F">nohup 后台运行程序</a></li>
+<li><a href="#jobs-%E6%9F%A5%E7%9C%8B%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B">jobs 查看后台进程</a></li>
+<li><a href="#chmodchownchgrp-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9D%83%E9%99%90">chmod&#x2F;chown&#x2F;chgrp 修改文件&#x2F;文件夹权限</a></li>
+<li><a href="#%E7%94%A8%E6%88%B7%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86">用户&#x2F;用户组管理</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E5%8D%A0%E7%94%A8">查看磁盘空间占用</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7">常用工具</a><ul>
+<li><a href="#vivim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7">vi&#x2F;vim文本编辑工具</a></li>
+<li><a href="#curl-%E8%AF%B7%E6%B1%82%E7%BD%91%E9%A1%B5%E6%95%B0%E6%8D%AE">curl 请求网页数据</a></li>
+<li><a href="#wget-%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7">wget 下载工具</a></li>
+<li><a href="#netstat-%E6%9F%A5%E7%9C%8B%E6%B4%BB%E5%8A%A8%E8%BF%9E%E6%8E%A5">netstat 查看活动连接</a></li>
+<li><a href="#arp-%E8%8E%B7%E5%8F%96%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BF%A1%E6%81%AF">arp 获取局域网信息</a></li>
+<li><a href="#tar-%E8%A7%A3%E5%8E%8B%E5%8E%8B%E7%BC%A9%E5%B7%A5%E5%85%B7">tar 解压&#x2F;压缩工具</a></li>
+<li><a href="#linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B5%81%E9%87%8F%E5%B8%A6%E5%AE%BD%E7%9B%91%E6%8E%A7%E7%BB%9F%E8%AE%A1">Linux服务器流量带宽监控&#x2F;统计</a></li>
+<li><a href="#linux-c%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6">Linux C语言生成可执行文件</a></li>
+<li><a href="#firewalld-%E9%98%B2%E7%81%AB%E5%A2%99">firewalld 防火墙</a></li>
+<li><a href="#lsof-%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3">lsof 查看端口</a></li>
+<li><a href="#sh-bash%E8%84%9A%E6%9C%AC">.sh bash脚本</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-tutorial.html">菜鸟网络Linux页面</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/">阿里镜像</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/core/install/linux">Linux安装.net</a></li>
+</ul>
+<h2 id="相关系统"><a href="#相关系统" class="headerlink" title="相关系统"></a>相关系统</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.centos.org/download/">CentOS</a> - CentOS 是一个基于Red Hat Linux 提供的可自由使用源代码的企业级Linux发行版本</li>
+<li><a target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop">Ubuntu</a> - Ubuntu（友帮拓、优般图、乌班图）是一个以桌面应用为主的开源GNU&#x2F;Linux操作系统，Ubuntu 是基于Debian GNU&#x2F;Linux，支持x86、amd64（即x64）和ppc架构，由全球化的专业开发团队（Canonical Ltd）打造</li>
+<li><a target="_blank" rel="noopener" href="https://www.debian.org/">Debian</a> - Debian 包含Linux操作系统和一些免费的软件分发。Debian是通过许多志愿者的工作来维持和更新的</li>
+<li>等等…</li>
+</ul>
+<h2 id="安全增强型linux"><a href="#安全增强型linux" class="headerlink" title="安全增强型linux"></a>安全增强型linux</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ly2020_/article/details/89875236">介绍文章</a></p>
+</li>
+<li><p>查看当前哪种模式</p>
+<pre><code>$ getenforce
+</code></pre>
+</li>
+<li><p>临时切换成许可模式</p>
+<pre><code>$ setforce 0
+</code></pre>
+</li>
+<li><p>临时切换成强制模式</p>
+<pre><code>$ setforce 1
+</code></pre>
+</li>
+<li><p>修改文件 永久关闭</p>
+<pre><code>vi /etc/selinux/config
+</code></pre>
+<p>  修改项 SELINUX&#x3D;disabled</p>
+</li>
+</ul>
+<hr>
+<h1 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://ubuntu.com/download/desktop">官方网站下载页</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11Lgjs4y">阿里镜像ubuntu页面</a></li>
+</ul>
+<h2 id="apt-与-apt-get-命令-用于更新软件"><a href="#apt-与-apt-get-命令-用于更新软件" class="headerlink" title="apt 与 apt-get 命令 用于更新软件"></a>apt 与 apt-get 命令 用于更新软件</h2><ul>
+<li><p>目前在Ubuntu18.04以后，尽量使用apt，而不是apt-get。apt可以给出更多的建议安装等提示。</p>
+</li>
+<li><p>在root用户下， apt upgrade firefox 可以更新firefox软件</p>
+</li>
+<li><p>普通用户下，sudo apt upgrade firefox  ，更新firefox软件。（sudo是以当前用户获得root临时权限）</p>
+</li>
+<li><p>apt与apt-get的用法：（apt是新的命令，有一些操作不支持，apt-get是老命令，可以支持更多的操作）</p>
+<table>
+<thead>
+<tr>
+<th align="left">apt命令</th>
+<th align="left">apt-get命令</th>
+<th align="left">命令功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">apt install</td>
+<td align="left">apt-get install</td>
+<td align="left">安装软件包</td>
+</tr>
+<tr>
+<td align="left">apt remove</td>
+<td align="left">apt-get remove</td>
+<td align="left">移除软件包</td>
+</tr>
+<tr>
+<td align="left">apt autoremove</td>
+<td align="left">apt-get autoremove</td>
+<td align="left">卸载软件包</td>
+</tr>
+<tr>
+<td align="left">apt purge</td>
+<td align="left">apt-get purge</td>
+<td align="left">移除软件包及配置文件</td>
+</tr>
+<tr>
+<td align="left">apt update</td>
+<td align="left">apt-get update</td>
+<td align="left">刷新存储库索引</td>
+</tr>
+<tr>
+<td align="left">apt upgrade</td>
+<td align="left">apt-get upgrade</td>
+<td align="left">升级所有可升级的软件包</td>
+</tr>
+<tr>
+<td align="left">apt autoremove</td>
+<td align="left">apt-get autoremove</td>
+<td align="left">自动删除不需要的包</td>
+</tr>
+<tr>
+<td align="left">apt full-upgrade</td>
+<td align="left">apt-get dist-upgrade</td>
+<td align="left">在升级软件包时自动处理依赖关系</td>
+</tr>
+<tr>
+<td align="left">apt search</td>
+<td align="left">apt-cache search</td>
+<td align="left">搜索应用程序</td>
+</tr>
+<tr>
+<td align="left">apt show</td>
+<td align="left">apt-cache show</td>
+<td align="left">显示装细节</td>
+</tr>
+<tr>
+<td align="left">apt list</td>
+<td align="left"></td>
+<td align="left">列出包含条件的包（已安装，可升级等）</td>
+</tr>
+<tr>
+<td align="left">apt edit-sources</td>
+<td align="left"></td>
+<td align="left">编辑源列表</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="运行AppImage文件"><a href="#运行AppImage文件" class="headerlink" title="运行AppImage文件"></a>运行AppImage文件</h2><ul>
+<li>文件右键 - 属性 - 权限 - 允许作为程序运行</li>
+</ul>
+<h2 id="关闭Ubuntu20-桌面动画-提升流畅性"><a href="#关闭Ubuntu20-桌面动画-提升流畅性" class="headerlink" title="关闭Ubuntu20 桌面动画 提升流畅性"></a>关闭Ubuntu20 桌面动画 提升流畅性</h2><ul>
+<li><p>关闭动画命令</p>
+<pre><code>  gsettings set org.gnome.desktop.interface enable-animations false
+</code></pre>
+</li>
+<li><p>打开动画命令</p>
+<pre><code>  gsettings set org.gnome.desktop.interface enable-animations true
+</code></pre>
+</li>
+</ul>
+<hr>
+<h1 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h1><h2 id="相关网站-1"><a href="#相关网站-1" class="headerlink" title="相关网站"></a>相关网站</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.centos.org/download/">官网下载页面</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/centos">阿里云CentOS镜像</a></li>
+<li><a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">阿里云镜像centos7.9下载页</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-install.html">菜鸟教程CentOS安装页</a></li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="开启SSH"><a href="#开启SSH" class="headerlink" title="开启SSH"></a>开启SSH</h3><ul>
+<li><a href="https://blog.pp6f.com/2022/03/03/Tools/ssh/">参考ssh文章</a></li>
+</ul>
+<h3 id="配置网卡IP地址"><a href="#配置网卡IP地址" class="headerlink" title="配置网卡IP地址"></a>配置网卡IP地址</h3><ul>
+<li><p>要配置网卡IP 先获取网卡名字</p>
+</li>
+<li><p>使用ip addr获取网卡信息 类似下面的信息 ens33 就是网卡名字</p>
+<pre><code>  2: ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+      link/ether 00:0a:23:25:d2:d1 brd ff:ff:ff:ff:ff:ff
+      inet 192.168.1.2/24 brd 192.168.1.255 scope global noprefixroute dynamic ens33
+      valid_lft 35682sec preferred_lft 35682sec
+      inet6 ba80::2aea:f3af:cddf:1232/64 scope link noprefixroute
+      valid_lft forever preferred_lft forever
+</code></pre>
+</li>
+<li><p>编辑ens33网卡配置文件</p>
+<pre><code>  vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+  # 修改
+  BOOTPROTO=&quot;dhcp&quot;
+  ONBOOT=&quot;yes&quot;
+</code></pre>
+<p>  修改后这是 DHCP 模式 自动获取IP</p>
+</li>
+<li><p>配置静态IP地址</p>
+<pre><code>  vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+  # 修改
+  bootproto=static
+  onboot=yes
+  # 在文件尾部追加
+  IPADDR=192.168.1.2
+  NETMASK=255.255.255.0
+  GATEWAY=192.168.1.1
+  DNS1=223.5.5.5
+  DNS2=8.8.8.8
+</code></pre>
+<p>  修改后这是 静态 模式</p>
+</li>
+<li><p>重启网络服务</p>
+<pre><code>  sudo systemctl restart network
+</code></pre>
+</li>
+<li><p>结束!</p>
+</li>
+</ul>
+<h3 id="添加开机启动"><a href="#添加开机启动" class="headerlink" title="添加开机启动"></a>添加开机启动</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.gaoxiaobo.com/web/server/81.html">参考文章</a></li>
+</ul>
+<h2 id="yum-软件安装工具"><a href="#yum-软件安装工具" class="headerlink" title="yum 软件安装工具"></a>yum 软件安装工具</h2><ul>
+<li><p>yum - 软件包安装工具</p>
+</li>
+<li><p>更新软件包</p>
+<pre><code>yum update
+</code></pre>
+</li>
+<li><p>安装软件</p>
+<pre><code>yum install &lt;name&gt;
+</code></pre>
+</li>
+<li><p>卸载软件</p>
+<pre><code>yum uninstall &lt;name&gt;
+</code></pre>
+</li>
+<li><p>查询已安装的软件</p>
+<pre><code>yum list
+#或
+yum list &lt;name&gt;
+</code></pre>
+</li>
+<li><p>查询所有软件库</p>
+<pre><code>yum search &lt;name&gt;
+</code></pre>
+</li>
+<li><p>更新缓存yum源</p>
+<pre><code>yum clean all
+yum makecache
+</code></pre>
+</li>
+<li><p>查看yum软件版本</p>
+<pre><code>yum repolist all | grep &lt;name&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="添加包签名到信任密钥列表"><a href="#添加包签名到信任密钥列表" class="headerlink" title="添加包签名到信任密钥列表"></a>添加包签名到信任密钥列表</h2><ul>
+<li><p>如:</p>
+<pre><code>  sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
+</code></pre>
+</li>
+</ul>
+<h2 id="CentOS-7安装Gnome-GUI-图形界面"><a href="#CentOS-7安装Gnome-GUI-图形界面" class="headerlink" title="CentOS 7安装Gnome GUI 图形界面"></a>CentOS 7安装Gnome GUI 图形界面</h2><blockquote>
+<p>当你安装的centos是服务器版本的时候，系统默认是不会安装 CentOS 的图形界面程序的，比如：gnome或者kde, 那么如果你想在图形界面下工作的话，可以手动来安装CentOS Gnome GUI包。  </p>
+</blockquote>
+<ul>
+<li>在安装Gnome 包之前，我们需要先检查下安装源是否正常，因为我们要通过yum命令来安装gnome包，而yum命令式通过yum 源来下载安装包的。</li>
+</ul>
+<ol>
+<li><p>在命令行下输入下面的命令来安装 Gnome 包</p>
+<pre><code> $ sudo  yum groupinstall &quot;GNOME Desktop&quot; &quot;Graphical Administration Tools&quot;
+</code></pre>
+</li>
+<li><p>更新系统的运行级别<br>如果你想 在系统下次 启动的时候自动进入图形界面，那么我们需要更改系统的运行级别，输入下面的命令来启用图形界面。</p>
+<pre><code> $sudo ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
+</code></pre>
+</li>
+<li><p>重启系统 当系统再次启动的时候，就会默认进入图形界面。通过VNC登陆服务器</p>
+</li>
+</ol>
+<h2 id="htop-进程管理查看工具"><a href="#htop-进程管理查看工具" class="headerlink" title="htop 进程管理查看工具"></a>htop 进程管理查看工具</h2><ul>
+<li><p>启用epel版本</p>
+<ul>
+<li><p>htop工具在epel源中提供</p>
+</li>
+<li><p>启用epel版本命令</p>
+<pre><code>  yum -y install epel-release
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>yum 安装 htop</p>
+<pre><code>  yum -y install htop
+</code></pre>
+</li>
+<li><p>运行htop</p>
+<pre><code>  htop
+</code></pre>
+</li>
+<li><p>htop常用按键</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">F1 : 查看htop使用说明</span><br><span class="line">F2 : 设置</span><br><span class="line">F3 : 搜索进程</span><br><span class="line">F4 : 过滤器，按关键字搜索</span><br><span class="line">F5 : 显示树形结构</span><br><span class="line">F6 : 选择排序方式</span><br><span class="line">F7 : 减少nice值，这样就可以提高对应进程的优先级</span><br><span class="line">F8 : 增加nice值，这样可以降低对应进程的优先级</span><br><span class="line">F9 : 杀掉选中的进程</span><br><span class="line">F10 : 退出htop</span><br><span class="line"></span><br><span class="line">/ : 搜索字符</span><br><span class="line">h : 显示帮助</span><br><span class="line">l ：显示进程打开的文件: 如果安装了lsof，按此键可以显示进程所打开的文件</span><br><span class="line">u ：显示所有用户，并可以选择某一特定用户的进程</span><br><span class="line">s : 将调用strace追踪进程的系统调用</span><br><span class="line">t : 显示树形结构</span><br><span class="line"></span><br><span class="line">H ：显示/隐藏用户线程</span><br><span class="line">I ：倒转排序顺序</span><br><span class="line">K ：显示/隐藏内核线程</span><br><span class="line">M ：按内存占用排序</span><br><span class="line">P ：按CPU排序</span><br><span class="line">T ：按运行时间排序</span><br><span class="line"></span><br><span class="line">上下键或PgUP, PgDn : 移动选中进程</span><br><span class="line">左右键或Home, End : 移动列表    </span><br><span class="line">Space(空格) : 标记/取消标记一个进程。命令可以作用于多个进程，例如 &quot;kill&quot;，将应用于所有已标记的进程</span><br></pre></td></tr></table></figure></li>
+<li><p>相关文章</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1115041">使用详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5629e331f58d">安装</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-tutorial.html">菜鸟教程Linux页面</a></li>
+</ul>
+<h2 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h2><ul>
+<li><p>在命令前加入sudo 以root权限执行命令</p>
+</li>
+<li><p>进入root用户权限</p>
+<pre><code>  sudo -i
+  sudo su root
+</code></pre>
+</li>
+</ul>
+<h2 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h2><blockquote>
+<p>服务命令</p>
+</blockquote>
+<ul>
+<li><p>在 <code>/etc/systemd/system/</code> 或 <code>/usr/lib/systemd/system/</code> 目录内创建testapp.service服务文件</p>
+</li>
+<li><p>内容</p>
+</li>
+<li><p>命令</p>
+<pre><code>  //设置开机启动
+  sudo systemctl enable NAME.service
+  //关闭开机启动
+  sudo systemctl disable NAME.service
+  //启动服务
+  sudo systemctl start NAME.service
+  //重启服务
+  sudo systemctl restart NAME.service
+  //停止服务
+  sudo systemctl stop NAME.service
+  //查询状态
+  sudo systemctl status NAME.service
+  //修改service文件后 执行重载命令
+  systemctl daemon-reload
+</code></pre>
+</li>
+</ul>
+<h2 id="命令行-x2F-图形界面-切换"><a href="#命令行-x2F-图形界面-切换" class="headerlink" title="命令行&#x2F;图形界面 切换"></a>命令行&#x2F;图形界面 切换</h2><ul>
+<li><p>获取当前的默认target</p>
+<pre><code>  systemctl get-default
+</code></pre>
+</li>
+<li><p>设置开机默认进入命令行</p>
+<pre><code>  # 输入命令：
+  sudo systemctl set-default multi-user.target 
+  # 重启：
+  reboot
+</code></pre>
+</li>
+<li><p>设置开机默认进入图形界面</p>
+<pre><code>  # 输入命令：
+  sudo systemctl set-default graphical.target  
+  # 重启：
+  reboot
+</code></pre>
+</li>
+<li><p>Linux系统7个运行级别</p>
+<ul>
+<li>0：关机,停机模式、</li>
+<li>1：单用户模式、</li>
+<li>2：多用户模式、</li>
+<li>3：完整的多用户文本模式、</li>
+<li>4：系统未使用，保留一般不用、</li>
+<li>5：图形化模式、</li>
+<li>6：重启模式</li>
+</ul>
+<p>  运行级就是操作系统当前正在运行的功能级别。这个级别从0到6 ，具有不同的功能。<br>  具体说明：图形化模式，登陆后进入图形GUI模式或GNOME、KDE图形化界面，如X Window系统。命令行输入</p>
+<pre><code>  # GUI模式
+  ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
+
+  # 命令行模式
+  ln -sf /lib/systemd/system/runlevel3.target /etc/systemd/system/default.target
+
+  # 重启
+  reboot
+</code></pre>
+</li>
+</ul>
+<h2 id="切换界面"><a href="#切换界面" class="headerlink" title="切换界面"></a>切换界面</h2><ul>
+<li>按键盘的 Control + Alt + {F1 - F7}</li>
+</ul>
+<h2 id="ip-addr-获取网卡信息"><a href="#ip-addr-获取网卡信息" class="headerlink" title="ip addr 获取网卡信息"></a>ip addr 获取网卡信息</h2><pre><code>    ip addr
+</code></pre>
+<h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><ul>
+<li><p>输出到命令行窗口</p>
+<pre><code>  $ echo &#39;abc\n&#39;
+  //或 使用 -e 使用转义符
+  $ echo -e &#39;abc\n&#39;
+</code></pre>
+</li>
+<li><p>输出到文件</p>
+<pre><code>  // 修改覆盖文件内容
+  $ echo &#39;abc&#39; &gt; a.txt
+  // 追加文件内容 原内容会保留
+  $ echo &#39;abc&#39; &gt;&gt; a.txt
+</code></pre>
+</li>
+</ul>
+<h2 id="ln-创建软链接命令"><a href="#ln-创建软链接命令" class="headerlink" title="ln 创建软链接命令"></a>ln 创建软链接命令</h2><ul>
+<li><p>创建软连接</p>
+<pre><code>  $ ln -s 程序路径包括程序文件名 /usr/bin/自定义程序名
+  # 例
+  $ ln -s /usr/local/bin/python3.6 /usr/bin/python3
+  # 设置后 可以在任意文件夹位置 执行python3
+</code></pre>
+</li>
+</ul>
+<h2 id="rm-删除文件-x2F-文件夹"><a href="#rm-删除文件-x2F-文件夹" class="headerlink" title="rm 删除文件&#x2F;文件夹"></a>rm 删除文件&#x2F;文件夹</h2><ul>
+<li><p>rm命令<br>-r 向下递归所有文件夹即文件 一并删除<br>-f 就是直接强行删除，不作任何提示的意思。</p>
+<pre><code>  # 强制删除文件/文件夹/路径下的所有文件
+  rm -rf &lt;文件/文件夹名/路径&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="mkdir-创建文件夹"><a href="#mkdir-创建文件夹" class="headerlink" title="mkdir 创建文件夹"></a>mkdir 创建文件夹</h2><ul>
+<li><p>mkdir命令</p>
+<pre><code>  mkdir &lt;文件夹名&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="pwd-显示当前路径"><a href="#pwd-显示当前路径" class="headerlink" title="pwd 显示当前路径"></a>pwd 显示当前路径</h2><ul>
+<li><p>pwd 命令</p>
+<pre><code>  pwd
+</code></pre>
+</li>
+</ul>
+<h2 id="cd-进入文件夹"><a href="#cd-进入文件夹" class="headerlink" title="cd 进入文件夹"></a>cd 进入文件夹</h2><ul>
+<li><p>进入当前路径下的abc文件夹</p>
+<pre><code>  cd abc
+</code></pre>
+</li>
+<li><p>进入绝对路径</p>
+<pre><code>  cd /usr/bin
+  # 进入用户文件夹
+  cd ~/
+</code></pre>
+</li>
+</ul>
+<h2 id="ls-x2F-dir-x2F-ll-显示文件-x2F-文件夹列表"><a href="#ls-x2F-dir-x2F-ll-显示文件-x2F-文件夹列表" class="headerlink" title="ls&#x2F;dir&#x2F;ll 显示文件&#x2F;文件夹列表"></a>ls&#x2F;dir&#x2F;ll 显示文件&#x2F;文件夹列表</h2><ul>
+<li><p>显示当前路径列表</p>
+<pre><code>  ls
+  # 显示所有文件/文件夹 包括隐藏文件
+  ls -al
+</code></pre>
+</li>
+<li><p>显示指定路径列表</p>
+<pre><code>  ls /root
+  # 显示root路径是否存在以a开头的文件/文件夹
+  ls /root/a*
+</code></pre>
+</li>
+<li><p>帮助信息</p>
+<pre><code>  ls --help
+</code></pre>
+</li>
+</ul>
+<h2 id="mv-移动文件"><a href="#mv-移动文件" class="headerlink" title="mv 移动文件"></a>mv 移动文件</h2><ul>
+<li><p>移动文件</p>
+<pre><code>  mv oldpath newpath
+</code></pre>
+</li>
+<li><p>重命名</p>
+<pre><code>  mv oldfilename newfilename
+</code></pre>
+</li>
+</ul>
+<h2 id="ps-查进程"><a href="#ps-查进程" class="headerlink" title="ps 查进程"></a>ps 查进程</h2><ul>
+<li><p>命令</p>
+<pre><code>  ps 命令查找与进程相关的PID号：
+  ps a 显示现行终端机下的所有程序，包括其他用户的程序。
+  ps -A 显示所有程序。
+  ps c 列出程序时，显示每个程序真正的指令名称，而不包含路径，参数或常驻服务的标示。
+  ps -e 此参数的效果和指定&quot;A&quot;参数相同。
+  ps e 列出程序时，显示每个程序所使用的环境变量。
+  ps f 用ASCII字符显示树状结构，表达程序间的相互关系。
+  ps -H 显示树状结构，表示程序间的相互关系。
+  ps -N 显示所有的程序，除了执行ps指令终端机下的程序之外。
+  ps s 采用程序信号的格式显示程序状况。
+  ps S 列出程序时，包括已中断的子程序资料。
+  ps -t &lt;终端机编号&gt; 指定终端机编号，并列出属于该终端机的程序的状况。
+  ps u 以用户为主的格式来显示程序状况。
+  ps x 显示所有程序，不以终端机来区分。
+</code></pre>
+</li>
+<li><p>常用命令</p>
+<pre><code>  ps aux
+
+  # 使用grep管道 查找指定程序名
+  ps aux | grep &lt;程序名&gt;
+
+  # 查看所有进程
+  ps -ef
+</code></pre>
+</li>
+</ul>
+<h2 id="kill-杀死进程"><a href="#kill-杀死进程" class="headerlink" title="kill 杀死进程"></a>kill 杀死进程</h2><ul>
+<li><p>杀死指定PID号进程 可以用ps命令查找PID号</p>
+<pre><code>  kill -9 333
+</code></pre>
+</li>
+<li><p>杀死指定名的进程</p>
+<pre><code>  kill -9 &lt;NAME&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="reboot-重启"><a href="#reboot-重启" class="headerlink" title="reboot 重启"></a>reboot 重启</h2><pre><code>    reboot
+</code></pre>
+<h2 id="poweroff-关机"><a href="#poweroff-关机" class="headerlink" title="poweroff 关机"></a>poweroff 关机</h2><pre><code>    poweroff
+</code></pre>
+<h2 id="sudo-passwd-更改当前用户密码"><a href="#sudo-passwd-更改当前用户密码" class="headerlink" title="sudo passwd 更改当前用户密码"></a>sudo passwd 更改当前用户密码</h2><pre><code>    sudo passwd
+</code></pre>
+<h2 id="top-Linux系统状况"><a href="#top-Linux系统状况" class="headerlink" title="top Linux系统状况"></a>top Linux系统状况</h2><ul>
+<li><p>监控Linux系统状况 CPU 内存 </p>
+</li>
+<li><p>查看内存使用说明 (shift+m 按照排名)  按 Q 退出 </p>
+</li>
+<li><p>类似任务管理器</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-top.html">参考菜鸟教程</a></p>
+<pre><code>  top
+</code></pre>
+</li>
+</ul>
+<h2 id="free-m-查看内存占用"><a href="#free-m-查看内存占用" class="headerlink" title="free -m 查看内存占用"></a>free -m 查看内存占用</h2><pre><code>    free -m
+</code></pre>
+<h2 id="df-h-查看硬盘占用率"><a href="#df-h-查看硬盘占用率" class="headerlink" title="df -h 查看硬盘占用率"></a>df -h 查看硬盘占用率</h2><pre><code>    df -h
+</code></pre>
+<h2 id="whereis-搜索命令"><a href="#whereis-搜索命令" class="headerlink" title="whereis 搜索命令"></a>whereis 搜索命令</h2><ul>
+<li><p>搜索包含python的路径名</p>
+<pre><code>  whereis python
+</code></pre>
+</li>
+</ul>
+<h2 id="nohup-后台运行程序"><a href="#nohup-后台运行程序" class="headerlink" title="nohup 后台运行程序"></a>nohup 后台运行程序</h2><ul>
+<li><p>设置进程为后台进程</p>
+</li>
+<li><p>运行程序前面加 nohup 表示不挂断的运行命令</p>
+</li>
+<li><p>在运行程序后面加入 &amp; 表示这个命令放在后台执行</p>
+<pre><code>  # 使 dotnet CoreWebDemo.dll 在后台运行 即便关闭远程连接一样可以运行
+  nohup dotnet CoreWebDemo.dll &amp;
+</code></pre>
+</li>
+</ul>
+<h2 id="jobs-查看后台进程"><a href="#jobs-查看后台进程" class="headerlink" title="jobs 查看后台进程"></a>jobs 查看后台进程</h2><ul>
+<li><p>查看后台进程  可以通过kill -9 进程ID 来结束进程</p>
+<pre><code>  jobs -l
+</code></pre>
+</li>
+</ul>
+<h2 id="chmod-x2F-chown-x2F-chgrp-修改文件-x2F-文件夹权限"><a href="#chmod-x2F-chown-x2F-chgrp-修改文件-x2F-文件夹权限" class="headerlink" title="chmod&#x2F;chown&#x2F;chgrp 修改文件&#x2F;文件夹权限"></a>chmod&#x2F;chown&#x2F;chgrp 修改文件&#x2F;文件夹权限</h2><ul>
+<li><p>chmod 命令 修改文件权限</p>
+<pre><code>  # 增加写入权限
+  chmod u+w 文件名
+
+  # 去除写入权限
+  chmod u-w 文件名
+
+  # 直接修改权限 777 表示所有权限
+  chmod 777 文件名
+</code></pre>
+</li>
+<li><p>chown 命令 修改文件所有者</p>
+<pre><code>  # 将 /u 的属主更改为&quot;root&quot;。
+  chown root /u
+
+  # 和上面类似，但同时也将其属组更改为&quot;staff&quot;。
+  chown root:staff /u
+
+  # 将 /u 及其子目录下所有文件的属主更改为&quot;root&quot;。
+  chown -hR root /u
+
+  # 将 /u 目录下所有文件和子目录的属主改为root
+  chown -R root /u
+</code></pre>
+</li>
+<li><p>chgrp 命令 修改文件用户组</p>
+<pre><code>  # 将 /u 的属组更改为&quot;staff&quot;。
+  chgrp staff /u
+
+  # 将 /u 及其子目录下所有文件的属组更改为&quot;staff&quot;。
+  chgrp -hR staff /u
+
+  # 如果要修改该目录下所有文件和目录，使用-R参数。
+  chgrp -R staff /u
+</code></pre>
+</li>
+</ul>
+<h2 id="用户-x2F-用户组管理"><a href="#用户-x2F-用户组管理" class="headerlink" title="用户&#x2F;用户组管理"></a>用户&#x2F;用户组管理</h2><ul>
+<li><p>创建&#x2F;删除用户</p>
+<pre><code>  # 建立新用户账号
+  useradd
+
+  # 删除用户
+  userdel
+</code></pre>
+</li>
+<li><p>修改账户</p>
+<pre><code>  # 设置用户密码
+  passwd user1
+
+  # 修改账户
+  usermod
+
+  # 将用户 user1的登录名改为 u1
+  usermod –l u1 user1
+
+  # 将用户 user1 加入到 users组中，
+  usermod –g users user1
+
+  # 将用户 user1 目录改为/users/us1
+  usermod –d /users/us1 user1
+</code></pre>
+</li>
+<li><p>查看用户</p>
+<pre><code>  # 查看当前用户
+  w
+  who
+  users
+  
+  # 查看系统中所有用户
+  grep bash /etc/passwd
+  # 或
+  cat /etc/passwd | cut -f 1 -d:
+</code></pre>
+</li>
+</ul>
+<h2 id="查看磁盘空间占用"><a href="#查看磁盘空间占用" class="headerlink" title="查看磁盘空间占用"></a>查看磁盘空间占用</h2><ul>
+<li><p>磁盘空间占用情况 命令</p>
+<pre><code>  df -hl
+</code></pre>
+</li>
+<li><p>查看指定目录空间占用情况 命令</p>
+<pre><code>  du -hl --max-depth=1 /root
+</code></pre>
+</li>
+<li><p>查看当前目录空间占用情况 命令</p>
+<pre><code>  du -hl
+</code></pre>
+</li>
+</ul>
+<hr>
+<h1 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h1><h2 id="vi-x2F-vim文本编辑工具"><a href="#vi-x2F-vim文本编辑工具" class="headerlink" title="vi&#x2F;vim文本编辑工具"></a>vi&#x2F;vim文本编辑工具</h2><ul>
+<li><p>编辑文件</p>
+<pre><code>  $ vim a.txt
+  $ vi a.txt
+</code></pre>
+<p>  进入文件后 按键盘 I 进入编辑模式  按 esc 退出编辑模式进入命令模式  </p>
+</li>
+<li><p>命令模式:</p>
+<ul>
+<li>shift+g - 光标直接跳转到最后一行</li>
+<li>shift+a - 光标跳转到本行末尾 并进入编辑模式</li>
+<li>shift+z+z - 保存退出</li>
+<li>I - 进入编辑模式</li>
+<li>ESC - 退出编辑模式&#x2F;进入命令模式</li>
+<li>:w - 保存</li>
+<li>:wq - 保存退出</li>
+<li>:wq! - 强制保存退出</li>
+<li>:q! - 强制退出不保存</li>
+</ul>
+</li>
+</ul>
+<h2 id="curl-请求网页数据"><a href="#curl-请求网页数据" class="headerlink" title="curl 请求网页数据"></a>curl 请求网页数据</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">参考文章</a></p>
+</li>
+<li><p>访问网页保存到文件</p>
+<pre><code>  $ curl -o filename.txt http://192.168.1.1/1.txt
+</code></pre>
+</li>
+<li><p>发送POST请求的数据体</p>
+<pre><code>  $ curl -d&#39;login=aaa&amp;password=111&#39;-X POST http://192.168.1.1/login
+  # 或
+  $ curl -d &#39;login=aaa&#39; -d &#39;password=111&#39; -X POST http://192.168.1.1/login
+  # 读取本地文件发送
+  $ curl -d &#39;@data.txt&#39; http://192.168.1.1/login
+</code></pre>
+</li>
+<li><p>发送GET请求</p>
+<pre><code>  $ curl -G -d &#39;login=aaa&amp;password=111&#39; http://192.168.1.1/login
+</code></pre>
+</li>
+</ul>
+<h2 id="wget-下载工具"><a href="#wget-下载工具" class="headerlink" title="wget 下载工具"></a>wget 下载工具</h2><ul>
+<li><p>命令</p>
+<pre><code>  wget http://1.1.1.1/abc.tar
+</code></pre>
+<p>  会下载到当前文件夹</p>
+</li>
+<li><p>还可以用来测试网速 找一个大文件直接下载</p>
+</li>
+</ul>
+<h2 id="netstat-查看活动连接"><a href="#netstat-查看活动连接" class="headerlink" title="netstat 查看活动连接"></a>netstat 查看活动连接</h2><pre><code>    # centos7 默认没有netstat命令 需要安装 net-tools 
+    yum install -y net-tools
+
+    netstat
+
+    # 查看监听(Listen)的端口
+    netstat -lntp
+
+    # 查看所有运行中的服务的详细信息
+    netstat -tulpn
+
+    # 查看端口被占用情况
+    netstat -tunlp|grep 端口号
+
+    # 查看所有建立的TCP连接
+    netstat -antp
+
+    # 查看所有端口占用情况
+    netstat -antp | grep :
+
+    # 查看80端口被哪个服务占用 或 netstat -antpuel  | grep &quot;:22&quot; | grep  -v grep（过虑grep本身）
+    netstat -antp | grep :80
+</code></pre>
+<h2 id="arp-获取局域网信息"><a href="#arp-获取局域网信息" class="headerlink" title="arp 获取局域网信息"></a>arp 获取局域网信息</h2><ul>
+<li><p>ARP命令可用于查询本机ARP缓存中IP地址和MAC地址的对应关系</p>
+<pre><code>  arp -a
+  arp
+</code></pre>
+</li>
+</ul>
+<h2 id="tar-解压-x2F-压缩工具"><a href="#tar-解压-x2F-压缩工具" class="headerlink" title="tar 解压&#x2F;压缩工具"></a>tar 解压&#x2F;压缩工具</h2><ul>
+<li><p>打包成tar.gz压缩包</p>
+<pre><code>  # tar -zcvf renwolesshel.tar.gz /renwolesshel
+</code></pre>
+</li>
+<li><p>解压tar.gz压缩包</p>
+<pre><code>  # tar zxvf renwolesshel.tar.gz
+</code></pre>
+</li>
+<li><p>打包成tar.bz2格式压缩包</p>
+<pre><code>  # tar -jcvf renwolesshel.tar.bz2 /renwolesshel
+</code></pre>
+</li>
+<li><p>解压tar.bz2格式的压缩包</p>
+<pre><code>  # tar jxvf renwolesshel.tar.bz2
+</code></pre>
+</li>
+<li><p>压缩成zip格式</p>
+<pre><code>  # zip -q -r renwolesshel.zip renwolesshel/
+</code></pre>
+</li>
+<li><p>解压zip格式的压缩包</p>
+<pre><code>  # unzip renwolesshel.zip
+</code></pre>
+</li>
+</ul>
+<h2 id="Linux服务器流量带宽监控-x2F-统计"><a href="#Linux服务器流量带宽监控-x2F-统计" class="headerlink" title="Linux服务器流量带宽监控&#x2F;统计"></a>Linux服务器流量带宽监控&#x2F;统计</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1430275">参考文章</a> (未经测试)</li>
+</ul>
+<h2 id="Linux-C语言生成可执行文件"><a href="#Linux-C语言生成可执行文件" class="headerlink" title="Linux C语言生成可执行文件"></a>Linux C语言生成可执行文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jack-zou/p/9068247.html">参考文章</a></li>
+</ul>
+<h2 id="firewalld-防火墙"><a href="#firewalld-防火墙" class="headerlink" title="firewalld 防火墙"></a>firewalld 防火墙</h2><ul>
+<li><p>查看防火墙状态</p>
+<pre><code>  sudo systemctl status firewalld
+</code></pre>
+<p>  看到active(running)就意味着防火墙打开了</p>
+</li>
+<li><p>启动防火墙</p>
+<pre><code>  sudo systemctl start firewalld
+</code></pre>
+</li>
+<li><p>重启防火墙</p>
+<pre><code>  sudo systemctl restart firewalld
+</code></pre>
+</li>
+<li><p>临时关闭防火墙</p>
+<pre><code>  sudo systemctl stop firewalld
+</code></pre>
+</li>
+<li><p>开机启动防火墙</p>
+<pre><code>  sudo systemctl enable firewalld
+</code></pre>
+</li>
+<li><p>开机不启动防火墙</p>
+<pre><code>  sudo systemctl disable firewalld
+</code></pre>
+</li>
+<li><p>查看防火墙规则</p>
+<pre><code>  firewall-cmd --list-all
+</code></pre>
+</li>
+<li><p>查看防火墙所有开放的端口</p>
+<pre><code>  firewall-cmd --zone=public --list-ports
+</code></pre>
+</li>
+<li><p>用户配置目录</p>
+<pre><code>  /etc/firewalld/
+</code></pre>
+</li>
+<li><p>添加自定义端口</p>
+<pre><code>  firewall-cmd --permanent --add-port=9999/tcp
+  firewall-cmd --permanent --add-port=9999/udp
+</code></pre>
+<p>  –permanent    &#x2F;&#x2F;设置为持久<br>  –add-port    &#x2F;&#x2F;标识添加的端口</p>
+</li>
+<li><p>还可以增加Zone命令 区概念</p>
+<pre><code>  //开放端口
+  firewall-cmd --zone=public --permanent --add-port=9999/tcp
+  firewall-cmd --zone=dmz --permanent --add-port=9999/tcp
+
+  //关闭端口
+  firewall-cmd --zone=public  --permanent --remove-port=5672/tcp
+</code></pre>
+</li>
+</ul>
+<h2 id="lsof-查看端口"><a href="#lsof-查看端口" class="headerlink" title="lsof 查看端口"></a>lsof 查看端口</h2><pre><code>    # 查看端口被占用情况
+    lsof -i:端口号
+</code></pre>
+<h2 id="sh-bash脚本"><a href="#sh-bash脚本" class="headerlink" title=".sh bash脚本"></a>.sh bash脚本</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Bash">参考维基百科的bash页面</a></p>
+</li>
+<li><p>文件头加入</p>
+<pre><code>  # 表示该程序由/bin/bash来解释运行
+  #!/bin/bash
+</code></pre>
+</li>
+<li><p>打印命令</p>
+<pre><code>  echo -e &quot;\n测试脚本\n&quot;
+</code></pre>
+<p>  打印带颜色的字符</p>
+<pre><code>  red=&#39;\e[91m&#39;
+  none=&#39;\e[0m&#39;
+  _red() &#123; echo -e $&#123;red&#125;$*$&#123;none&#125;; &#125;
+  echo -e &quot;$&#123;red&#125;这是红色$&#123;none&#125;&quot;
+</code></pre>
+</li>
+<li><p>读取命令行输入</p>
+<pre><code>  read -r
+</code></pre>
+</li>
+<li><p>$ 表示后面的字符是变量</p>
+<pre><code>  a=1
+  echo -e $a
+  # 输出的是 1
+  echo -e a
+  # 输出的是 a
+</code></pre>
+</li>
+<li><p>退出命令</p>
+<pre><code>  exit 1
+</code></pre>
+</li>
+<li><p>判断</p>
+<pre><code>  # 判断yum是否已安装
+  if [[ $(command -v yum) ]]; then
+      echo -e &quot;已安装yum&quot;
+  else
+      echo -e &quot;未安装yum&quot;
+  fi
+
+  # 判断变量的值
+  a=1
+  if ((a == 1));then
+      ((a = a + 1))
+      echo -e $a
+  else
+      echo -e &quot;a != 1&quot;
+  fi
+
+  # 正则表达式 判断是否为数字
+  a=586445612533425
+  if [[ $a =~ (^)([0-9]+)($) ]]
+  then
+      echo -e &quot;数字&quot;
+  else
+      echo -e &quot;非数字&quot;
+  fi
+</code></pre>
+</li>
+<li><p>case</p>
+<pre><code>  a=3
+  case $a in
+  &#39;1&#39;)
+      echo -e &quot;是1&quot;
+      ;;
+  &#39;2&#39;)
+      echo -e &quot;是2&quot;
+      ;;
+  *)
+      echo -e &quot;都不是&quot;
+      ;;
+  esac
+</code></pre>
+</li>
+<li><p>变量</p>
+<pre><code>  a = 1
+  # 使用事 a 前面加 $ 例如这也 $a
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0</td>
+<td>shell或shell脚本的名字</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>以一对双引号给出参数列表</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>将各个参数分别加双引号返回</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>参数的个数</td>
+</tr>
+<tr>
+<td>$_</td>
+<td>代表上一个命令的最后一个参数</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>代表所在命令的PID</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>代表最后执行的后台命令的PID</td>
+</tr>
+<tr>
+<td><code>$?</code></td>
+<td>获取上一个命令执行后的退出状态 echo $? 返回0执行成功 非0值执行失败</td>
+</tr>
+<tr>
+<td>$abc</td>
+<td>abc是变量名 引用变量</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>转义符</p>
+<pre><code>  转义字符    扩展成...
+  \a        响铃符
+  \b        退格符
+  \e        ANSI转义符，等价于\033
+  \f        馈页符
+  \n        换行符
+  \r        回车符
+  \t        水平制表符
+  \v        垂直制表符
+  \\        反斜杠
+  \&#39;        单引号
+  \nnn        十进制值为nnn的8-bit字符（1－3位）
+  \xHH        十六进制值为HH的8-bit字符（1或2位）
+  \cx        control-X字符
+</code></pre>
+</li>
+<li><p>创建一个暂存文件 或 目录供shell script使用</p>
+<pre><code>  # 创建一个暂存目录
+  path=&quot;$(mktemp -d)&quot;
+  echo $path
+  # 创建一个暂存文件
+  tmpfile=&quot;$(mktemp -t)&quot;
+  echo $tmpfile
+</code></pre>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Linux</p><p><a href="http://blog.pp6f.com/2022/03/10/System/Linux/">http://blog.pp6f.com/2022/03/10/System/Linux/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-03-10</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a><a class="icons" rel="noopener" target="_blank" title="ShareAlike" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="icon fab fa-creative-commons-sa"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Ubuntu/">Ubuntu</a><a class="link-muted mr-2" rel="tag" href="/tags/Linux/">Linux</a><a class="link-muted mr-2" rel="tag" href="/tags/System/">System</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62075f04049246001a1511a9&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/donate/alipay.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/donate/wechat.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/03/16/System/openwrt/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">OpenWRT 路由系统</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/03/08/Dev/python/"><span class="level-item">Python</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="binbruce/blog.pp6f.github.io" issue-term="pathname" label="some-issue-label" theme="github-light" crossorigin="anonymous" async></script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Bruce"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bruce</p><p class="is-size-6 is-block">Bruce&#039;s Blog</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">19</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">23</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/binbruce" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/binbruce"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Google" href="https://google.com/"><i class="fab fa-google"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#索引"><span class="level-left"><span class="level-item">1</span><span class="level-item">索引</span></span></a></li><li><a class="level is-mobile" href="#Linux"><span class="level-left"><span class="level-item">2</span><span class="level-item">Linux</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#相关网站"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">相关网站</span></span></a></li><li><a class="level is-mobile" href="#相关系统"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">相关系统</span></span></a></li><li><a class="level is-mobile" href="#安全增强型linux"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">安全增强型linux</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Ubuntu"><span class="level-left"><span class="level-item">3</span><span class="level-item">Ubuntu</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#apt-与-apt-get-命令-用于更新软件"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">apt 与 apt-get 命令 用于更新软件</span></span></a></li><li><a class="level is-mobile" href="#运行AppImage文件"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">运行AppImage文件</span></span></a></li><li><a class="level is-mobile" href="#关闭Ubuntu20-桌面动画-提升流畅性"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">关闭Ubuntu20 桌面动画 提升流畅性</span></span></a></li></ul></li><li><a class="level is-mobile" href="#CentOS"><span class="level-left"><span class="level-item">4</span><span class="level-item">CentOS</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#相关网站-1"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">相关网站</span></span></a></li><li><a class="level is-mobile" href="#配置"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">配置</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#开启SSH"><span class="level-left"><span class="level-item">4.2.1</span><span class="level-item">开启SSH</span></span></a></li><li><a class="level is-mobile" href="#配置网卡IP地址"><span class="level-left"><span class="level-item">4.2.2</span><span class="level-item">配置网卡IP地址</span></span></a></li><li><a class="level is-mobile" href="#添加开机启动"><span class="level-left"><span class="level-item">4.2.3</span><span class="level-item">添加开机启动</span></span></a></li></ul></li><li><a class="level is-mobile" href="#yum-软件安装工具"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">yum 软件安装工具</span></span></a></li><li><a class="level is-mobile" href="#添加包签名到信任密钥列表"><span class="level-left"><span class="level-item">4.4</span><span class="level-item">添加包签名到信任密钥列表</span></span></a></li><li><a class="level is-mobile" href="#CentOS-7安装Gnome-GUI-图形界面"><span class="level-left"><span class="level-item">4.5</span><span class="level-item">CentOS 7安装Gnome GUI 图形界面</span></span></a></li><li><a class="level is-mobile" href="#htop-进程管理查看工具"><span class="level-left"><span class="level-item">4.6</span><span class="level-item">htop 进程管理查看工具</span></span></a></li></ul></li><li><a class="level is-mobile" href="#常用命令"><span class="level-left"><span class="level-item">5</span><span class="level-item">常用命令</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#sudo"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">sudo</span></span></a></li><li><a class="level is-mobile" href="#systemctl"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">systemctl</span></span></a></li><li><a class="level is-mobile" href="#命令行-x2F-图形界面-切换"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">命令行/图形界面 切换</span></span></a></li><li><a class="level is-mobile" href="#切换界面"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">切换界面</span></span></a></li><li><a class="level is-mobile" href="#ip-addr-获取网卡信息"><span class="level-left"><span class="level-item">5.5</span><span class="level-item">ip addr 获取网卡信息</span></span></a></li><li><a class="level is-mobile" href="#echo"><span class="level-left"><span class="level-item">5.6</span><span class="level-item">echo</span></span></a></li><li><a class="level is-mobile" href="#ln-创建软链接命令"><span class="level-left"><span class="level-item">5.7</span><span class="level-item">ln 创建软链接命令</span></span></a></li><li><a class="level is-mobile" href="#rm-删除文件-x2F-文件夹"><span class="level-left"><span class="level-item">5.8</span><span class="level-item">rm 删除文件/文件夹</span></span></a></li><li><a class="level is-mobile" href="#mkdir-创建文件夹"><span class="level-left"><span class="level-item">5.9</span><span class="level-item">mkdir 创建文件夹</span></span></a></li><li><a class="level is-mobile" href="#pwd-显示当前路径"><span class="level-left"><span class="level-item">5.10</span><span class="level-item">pwd 显示当前路径</span></span></a></li><li><a class="level is-mobile" href="#cd-进入文件夹"><span class="level-left"><span class="level-item">5.11</span><span class="level-item">cd 进入文件夹</span></span></a></li><li><a class="level is-mobile" href="#ls-x2F-dir-x2F-ll-显示文件-x2F-文件夹列表"><span class="level-left"><span class="level-item">5.12</span><span class="level-item">ls/dir/ll 显示文件/文件夹列表</span></span></a></li><li><a class="level is-mobile" href="#mv-移动文件"><span class="level-left"><span class="level-item">5.13</span><span class="level-item">mv 移动文件</span></span></a></li><li><a class="level is-mobile" href="#ps-查进程"><span class="level-left"><span class="level-item">5.14</span><span class="level-item">ps 查进程</span></span></a></li><li><a class="level is-mobile" href="#kill-杀死进程"><span class="level-left"><span class="level-item">5.15</span><span class="level-item">kill 杀死进程</span></span></a></li><li><a class="level is-mobile" href="#reboot-重启"><span class="level-left"><span class="level-item">5.16</span><span class="level-item">reboot 重启</span></span></a></li><li><a class="level is-mobile" href="#poweroff-关机"><span class="level-left"><span class="level-item">5.17</span><span class="level-item">poweroff 关机</span></span></a></li><li><a class="level is-mobile" href="#sudo-passwd-更改当前用户密码"><span class="level-left"><span class="level-item">5.18</span><span class="level-item">sudo passwd 更改当前用户密码</span></span></a></li><li><a class="level is-mobile" href="#top-Linux系统状况"><span class="level-left"><span class="level-item">5.19</span><span class="level-item">top Linux系统状况</span></span></a></li><li><a class="level is-mobile" href="#free-m-查看内存占用"><span class="level-left"><span class="level-item">5.20</span><span class="level-item">free -m 查看内存占用</span></span></a></li><li><a class="level is-mobile" href="#df-h-查看硬盘占用率"><span class="level-left"><span class="level-item">5.21</span><span class="level-item">df -h 查看硬盘占用率</span></span></a></li><li><a class="level is-mobile" href="#whereis-搜索命令"><span class="level-left"><span class="level-item">5.22</span><span class="level-item">whereis 搜索命令</span></span></a></li><li><a class="level is-mobile" href="#nohup-后台运行程序"><span class="level-left"><span class="level-item">5.23</span><span class="level-item">nohup 后台运行程序</span></span></a></li><li><a class="level is-mobile" href="#jobs-查看后台进程"><span class="level-left"><span class="level-item">5.24</span><span class="level-item">jobs 查看后台进程</span></span></a></li><li><a class="level is-mobile" href="#chmod-x2F-chown-x2F-chgrp-修改文件-x2F-文件夹权限"><span class="level-left"><span class="level-item">5.25</span><span class="level-item">chmod/chown/chgrp 修改文件/文件夹权限</span></span></a></li><li><a class="level is-mobile" href="#用户-x2F-用户组管理"><span class="level-left"><span class="level-item">5.26</span><span class="level-item">用户/用户组管理</span></span></a></li><li><a class="level is-mobile" href="#查看磁盘空间占用"><span class="level-left"><span class="level-item">5.27</span><span class="level-item">查看磁盘空间占用</span></span></a></li></ul></li><li><a class="level is-mobile" href="#常用工具"><span class="level-left"><span class="level-item">6</span><span class="level-item">常用工具</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#vi-x2F-vim文本编辑工具"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">vi/vim文本编辑工具</span></span></a></li><li><a class="level is-mobile" href="#curl-请求网页数据"><span class="level-left"><span class="level-item">6.2</span><span class="level-item">curl 请求网页数据</span></span></a></li><li><a class="level is-mobile" href="#wget-下载工具"><span class="level-left"><span class="level-item">6.3</span><span class="level-item">wget 下载工具</span></span></a></li><li><a class="level is-mobile" href="#netstat-查看活动连接"><span class="level-left"><span class="level-item">6.4</span><span class="level-item">netstat 查看活动连接</span></span></a></li><li><a class="level is-mobile" href="#arp-获取局域网信息"><span class="level-left"><span class="level-item">6.5</span><span class="level-item">arp 获取局域网信息</span></span></a></li><li><a class="level is-mobile" href="#tar-解压-x2F-压缩工具"><span class="level-left"><span class="level-item">6.6</span><span class="level-item">tar 解压/压缩工具</span></span></a></li><li><a class="level is-mobile" href="#Linux服务器流量带宽监控-x2F-统计"><span class="level-left"><span class="level-item">6.7</span><span class="level-item">Linux服务器流量带宽监控/统计</span></span></a></li><li><a class="level is-mobile" href="#Linux-C语言生成可执行文件"><span class="level-left"><span class="level-item">6.8</span><span class="level-item">Linux C语言生成可执行文件</span></span></a></li><li><a class="level is-mobile" href="#firewalld-防火墙"><span class="level-left"><span class="level-item">6.9</span><span class="level-item">firewalld 防火墙</span></span></a></li><li><a class="level is-mobile" href="#lsof-查看端口"><span class="level-left"><span class="level-item">6.10</span><span class="level-item">lsof 查看端口</span></span></a></li><li><a class="level is-mobile" href="#sh-bash脚本"><span class="level-left"><span class="level-item">6.11</span><span class="level-item">.sh bash脚本</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Dev/"><span class="level-start"><span class="level-item">Dev</span></span><span class="level-end"><span class="level-item tag">8</span></span></a><ul><li><a class="level is-mobile" href="/categories/Dev/Net-Core/"><span class="level-start"><span class="level-item">.Net Core</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/MySql/"><span class="level-start"><span class="level-item">MySql</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Next-js/"><span class="level-start"><span class="level-item">Next.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Nginx/"><span class="level-start"><span class="level-item">Nginx</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Node-js/"><span class="level-start"><span class="level-item">Node.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Git/"><span class="level-start"><span class="level-item">Git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/GitHub/"><span class="level-start"><span class="level-item">GitHub</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/System/"><span class="level-start"><span class="level-item">System</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/categories/System/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/Windows/"><span class="level-start"><span class="level-item">Windows</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F/"><span class="level-start"><span class="level-item">路由系统</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Tools/"><span class="level-start"><span class="level-item">Tools</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/categories/Tools/SSH/"><span class="level-start"><span class="level-item">SSH</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-02T17:05:08.000Z">2022-04-02</time></p><p class="title"><a href="/2022/04/02/Dev/mysql/">MySql 安装 使用</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/MySql/">MySql</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-31T01:51:11.000Z">2022-03-31</time></p><p class="title"><a href="/2022/03/31/Dev/nginx-log/">nginx 日志</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T20:30:21.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx-conf/">配置 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T15:08:09.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx/">CentOS 安装 使用 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T14:27:54.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/netcore/">CentOS安装 .NET Core 运行环境 并运行 .NET Core 程序</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Net-Core/">.Net Core</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">二月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Article/"><span class="tag">Article</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C#</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Dev/"><span class="tag">Dev</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Encrypt/"><span class="tag">Encrypt</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Actions/"><span class="tag">Github Actions</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Desktop/"><span class="tag">Github Desktop</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo-Theme/"><span class="tag">Hexo Theme</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySql/"><span class="tag">MySql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Net-Core/"><span class="tag">Net Core</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Node-js/"><span class="tag">Node.js</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Openwrt/"><span class="tag">Openwrt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SSH/"><span class="tag">SSH</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/System/"><span class="tag">System</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ubuntu/"><span class="tag">Ubuntu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Windows/"><span class="tag">Windows</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Bruce's Blog</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客, <span id="busuanzi_value_site_pv">0</span>次访问</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/binbruce"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script src="/js/night.js" defer></script><script>if (true == true) {
+			$(document).ready(function () {
+				var int = setInterval(fixCount, 100);
+				var uvOffSet = parseInt(13900);
+				var pvOffSet = parseInt(31900);
+				
+				function fixCount() {
+					var realUv = parseInt($("#busuanzi_value_site_uv").html())
+					var realPv = parseInt($("#busuanzi_value_site_pv").html())
+					if ($("#busuanzi_container_site_uv").css("display") != "none" && realUv > 0) {
+						clearInterval(int);
+						$("#busuanzi_value_site_uv").html(realUv + uvOffSet);
+						$("#busuanzi_value_site_pv").html(realPv + pvOffSet);
+					}
+				}
+			});
+		}</script>           <div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

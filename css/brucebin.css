@@ -1,0 +1,31 @@
+@media screen and (min-width: 1088px) {
+  .container {
+    max-width: 98%;
+    width: 98%;
+  }
+  .container .column.is-3-widescreen {
+    width: 20%;
+  }
+  .container .column.is-6-widescreen {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 1088px) {
+  .container .column.is-4-widescreen {
+    width: 20%;
+  }
+  .container .column.is-8-widescreen {
+    width: 80%;
+  }
+  .is-1-column .container,
+  .is-2-column .container {
+    max-width: 98%;
+    width: 98%;
+  }
+}
+.card-content .utterances {
+  max-width: 1472px;
+}
+figure.highlight .title {
+  color: #ffd700;
+}

@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>SSH - Bruce&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bruce"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bruce"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="SSH（Secure Shell ）是一种安全通道协议，主要用来实现字符界面的远程的登录、远程复制等功能。 SSH协议对通信双方的数据传输进行了加密处理，其中包括用户登录时输入的用户口令。因此SSH协议具有很好的安全性。"><meta property="og:type" content="blog"><meta property="og:title" content="SSH"><meta property="og:url" content="http://blog.pp6f.com/2022/03/03/Tools/ssh/"><meta property="og:site_name" content="Bruce&#039;s Blog"><meta property="og:description" content="SSH（Secure Shell ）是一种安全通道协议，主要用来实现字符界面的远程的登录、远程复制等功能。 SSH协议对通信双方的数据传输进行了加密处理，其中包括用户登录时输入的用户口令。因此SSH协议具有很好的安全性。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://blog.pp6f.com/img/og_image.png"><meta property="article:published_time" content="2022-03-03T16:37:39.000Z"><meta property="article:modified_time" content="2022-04-19T20:45:41.324Z"><meta property="article:tag" content="SSH"><meta property="article:tag" content="Tools"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.pp6f.com/2022/03/03/Tools/ssh/"},"headline":"SSH","image":["http://blog.pp6f.com/img/og_image.png"],"datePublished":"2022-03-03T16:37:39.000Z","dateModified":"2022-04-19T20:45:41.324Z","author":{"@type":"Person","name":null},"publisher":{"@type":"Organization","name":"Bruce's Blog","logo":{"@type":"ImageObject","url":"http://blog.pp6f.com/img/logo.png"}},"description":"SSH（Secure Shell ）是一种安全通道协议，主要用来实现字符界面的远程的登录、远程复制等功能。 SSH协议对通信双方的数据传输进行了加密处理，其中包括用户登录时输入的用户口令。因此SSH协议具有很好的安全性。"}</script><link rel="canonical" href="http://blog.pp6f.com/2022/03/03/Tools/ssh/"><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?1216c36d0c1f22cc295e5fb60b670b9b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-5RZTMS5D40" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-5RZTMS5D40');</script><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+        <script>
+            function switchTab(element) {
+                const id = element.parentElement.id;
+                const tabElements = element.parentElement.parentElement.children;
+                const contentElements = element.parentElement.parentElement.parentElement.parentElement.children[1].children;
+                for (let i = 0; i < tabElements.length; i++) {
+                    const $tab = tabElements[i];
+                    const $content = contentElements[i];
+                    if ($tab.id === id) {
+                        $tab.classList.add('is-active');
+                    } else {
+                        $tab.classList.remove('is-active');
+                    }
+                    if ($content.id === id) {
+                        $content.classList.remove('is-hidden');
+                    } else {
+                        $content.classList.add('is-hidden');
+                    }
+                }
+            }
+        </script>
+        <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" target="_blank" rel="noopener" href="https://pp6f.com">主页</a><a class="navbar-item" href="/">博客</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">我</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-lightbulb" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item copyright article-title type-2">原创</span><span class="level-item"><time dateTime="2022-03-03T16:37:39.000Z" title="3/3/2022, 4:37:39 PM">2022-03-03</time>发表</span><span class="level-item"><time dateTime="2022-04-19T20:45:41.324Z" title="4/19/2022, 8:45:41 PM">2022-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Tools/">Tools</a><span> / </span><a class="link-muted" href="/categories/Tools/SSH/">SSH</a></span><span class="level-item">18 分钟读完 (大约2719个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">SSH</h1><div class="copyright article-block type-2"><p>版权申明：本文为原创文章，转载请注明原文出处</p><p>原文链接：<a href="http://blog.pp6f.com/2022/03/03/Tools/ssh/" target="_blank">http://blog.pp6f.com/2022/03/03/Tools/ssh/</a></p></div><div class="content"><ul>
+<li>SSH（Secure Shell ）是一种安全通道协议，主要用来实现字符界面的远程的登录、远程复制等功能。</li>
+<li>SSH协议对通信双方的数据传输进行了加密处理，其中包括用户登录时输入的用户口令。因此SSH协议具有很好的安全性。</li>
+</ul>
+<span id="more"></span>
+
+
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><ul>
+<li><a href="#%E7%B4%A2%E5%BC%95">索引</a></li>
+<li><a href="#server-ssh%E9%85%8D%E7%BD%AE">Server SSH配置</a><ul>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7">服务端使用的工具</a></li>
+<li><a href="#ssh%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%90%AF-%E7%8A%B6%E6%80%81%E6%9F%A5%E8%AF%A2">SSH服务开启 状态查询</a></li>
+<li><a href="#ssh%E9%85%8D%E7%BD%AE">SSH配置</a></li>
+<li><a href="#sshd%E6%94%AF%E6%8C%81%E4%B8%A4%E7%A7%8D%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F">sshd支持两种连接方式</a></li>
+<li><a href="#%E5%AF%86%E9%92%A5"><strong>密钥</strong></a><ul>
+<li><a href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9"><strong>生成密钥对</strong></a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AF%86%E9%92%A5"><strong>配置服务器密钥</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#client-ssh%E9%85%8D%E7%BD%AE">Client SSH配置</a><ul>
+<li><a href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E7%A8%8B%E5%BA%8F">客户端使用的程序</a></li>
+<li><a href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E5%91%BD%E4%BB%A4">客户端远程登录命令</a></li>
+<li><a href="#ssh%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8">ssh登录服务器</a></li>
+<li><a href="#scp%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8">scp拷贝文件到服务器</a></li>
+<li><a href="#sftp">sftp</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E9%94%99%E8%AF%AF">问题错误</a><ul>
+<li><a href="#%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E7%9A%84%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF-1">连接服务器时的错误信息 1</a></li>
+<li><a href="#%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E7%9A%84%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF-2">连接服务器时的错误信息 2</a></li>
+<li><a href="#%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E7%9A%84%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF-3">连接服务器时的错误信息 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Server-SSH配置"><a href="#Server-SSH配置" class="headerlink" title="Server SSH配置"></a>Server SSH配置</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/htfhtf/p/15000582.html">参考文章</a><h2 id="服务端使用的工具"><a href="#服务端使用的工具" class="headerlink" title="服务端使用的工具"></a>服务端使用的工具</h2></li>
+<li>OpenSSH</li>
+<li>OpenSSH 是实现 SSH 协议的开源软件项目，适用于各种 UNIX、Linux 操作系统。</li>
+<li>CentOS7 系统默认已安装 OpenSSH 相关软件包，并已将 sshd 服务添加为开机自启动。</li>
+</ul>
+<h2 id="SSH服务开启-状态查询"><a href="#SSH服务开启-状态查询" class="headerlink" title="SSH服务开启 状态查询"></a>SSH服务开启 状态查询</h2><ul>
+<li><p>开启</p>
+<pre><code>  sudo systemctl start sshd
+</code></pre>
+</li>
+<li><p>状态查询</p>
+<pre><code>  sudo systemctl status sshd
+</code></pre>
+</li>
+</ul>
+<h2 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h2><ul>
+<li><p>sshd 默认端口号为 22</p>
+</li>
+<li><p>&#x2F;etc&#x2F;ssh&#x2F;sshd_config 针对服务端的配置文件</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line">#	$OpenBSD: sshd_config,v 1.100 2016/08/15 12:32:04 naddy Exp $</span><br><span class="line"></span><br><span class="line"># This is the sshd server system-wide configuration file.  See</span><br><span class="line"># sshd_config(5) for more information.</span><br><span class="line"></span><br><span class="line"># This sshd was compiled with PATH=/usr/local/bin:/usr/bin</span><br><span class="line"></span><br><span class="line"># The strategy used for options in the default sshd_config shipped with</span><br><span class="line"># OpenSSH is to specify options with their default value where</span><br><span class="line"># possible, but leave them commented.  Uncommented options override the</span><br><span class="line"># default value.</span><br><span class="line"></span><br><span class="line"># If you want to change the port on a SELinux system, you have to tell</span><br><span class="line"># SELinux about this change.</span><br><span class="line"># semanage port -a -t ssh_port_t -p tcp #PORTNUMBER</span><br><span class="line">#</span><br><span class="line">#Port 22                            # 监听端口</span><br><span class="line">#AddressFamily any</span><br><span class="line">#ListenAddress 0.0.0.0              # 指定监听地址  0.0.0.0表示监听所有地址</span><br><span class="line">#ListenAddress ::</span><br><span class="line"></span><br><span class="line">HostKey /etc/ssh/ssh_host_rsa_key</span><br><span class="line">#HostKey /etc/ssh/ssh_host_dsa_key</span><br><span class="line">HostKey /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line">HostKey /etc/ssh/ssh_host_ed25519_key</span><br><span class="line"></span><br><span class="line"># Ciphers and keying</span><br><span class="line">#RekeyLimit default none</span><br><span class="line"></span><br><span class="line"># Logging</span><br><span class="line">#SyslogFacility AUTH</span><br><span class="line">SyslogFacility AUTHPRIV</span><br><span class="line">#LogLevel INFO</span><br><span class="line"></span><br><span class="line"># Authentication:</span><br><span class="line"></span><br><span class="line">#LoginGraceTime 2m                  # 登录验证事件为2分钟</span><br><span class="line">#PermitRootLogin yes                # 允许root用户登录</span><br><span class="line">#StrictModes yes</span><br><span class="line">#MaxAuthTries 6                     # 重试最大次数为6</span><br><span class="line">#MaxSessions 10</span><br><span class="line"></span><br><span class="line">#PubkeyAuthentication yes           # 启用密钥对验证</span><br><span class="line"># RSAAuthentication yes             # RSA认证 非必须 不存在不添加此项</span><br><span class="line"></span><br><span class="line"># The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2</span><br><span class="line"># but this is overridden so installations will only check .ssh/authorized_keys</span><br><span class="line">AuthorizedKeysFile	.ssh/authorized_keys        # 指定公钥库文件</span><br><span class="line"></span><br><span class="line">#AuthorizedPrincipalsFile none</span><br><span class="line"></span><br><span class="line">#AuthorizedKeysCommand none</span><br><span class="line">#AuthorizedKeysCommandUser nobody</span><br><span class="line"></span><br><span class="line"># For this to work you will also need host keys in /etc/ssh/ssh_known_hosts</span><br><span class="line">#HostbasedAuthentication no</span><br><span class="line"># Change to yes if you don&#x27;t trust ~/.ssh/known_hosts for</span><br><span class="line"># HostbasedAuthentication</span><br><span class="line">#IgnoreUserKnownHosts no</span><br><span class="line"># Don&#x27;t read the user&#x27;s ~/.rhosts and ~/.shosts files</span><br><span class="line">#IgnoreRhosts yes</span><br><span class="line"></span><br><span class="line"># To disable tunneled clear text passwords, change to no here!</span><br><span class="line">#PasswordAuthentication yes             # 启用密码验证</span><br><span class="line">#PermitEmptyPasswords no                # 是否允许空密码登录</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line"></span><br><span class="line"># Change to no to disable s/key passwords</span><br><span class="line">#ChallengeResponseAuthentication yes</span><br><span class="line">ChallengeResponseAuthentication no</span><br><span class="line"></span><br><span class="line"># Kerberos options</span><br><span class="line">#KerberosAuthentication no</span><br><span class="line">#KerberosOrLocalPasswd yes</span><br><span class="line">#KerberosTicketCleanup yes</span><br><span class="line">#KerberosGetAFSToken no</span><br><span class="line">#KerberosUseKuserok yes</span><br><span class="line"></span><br><span class="line"># GSSAPI options</span><br><span class="line">GSSAPIAuthentication yes</span><br><span class="line">GSSAPICleanupCredentials no</span><br><span class="line">#GSSAPIStrictAcceptorCheck yes</span><br><span class="line">#GSSAPIKeyExchange no</span><br><span class="line">#GSSAPIEnablek5users no</span><br><span class="line"></span><br><span class="line"># Set this to &#x27;yes&#x27; to enable PAM authentication, account processing,</span><br><span class="line"># and session processing. If this is enabled, PAM authentication will</span><br><span class="line"># be allowed through the ChallengeResponseAuthentication and</span><br><span class="line"># PasswordAuthentication.  Depending on your PAM configuration,</span><br><span class="line"># PAM authentication via ChallengeResponseAuthentication may bypass</span><br><span class="line"># the setting of &quot;PermitRootLogin without-password&quot;.</span><br><span class="line"># If you just want the PAM account and session checks to run without</span><br><span class="line"># PAM authentication, then enable this but set PasswordAuthentication</span><br><span class="line"># and ChallengeResponseAuthentication to &#x27;no&#x27;.</span><br><span class="line"># WARNING: &#x27;UsePAM no&#x27; is not supported in Red Hat Enterprise Linux and may cause several</span><br><span class="line"># problems.</span><br><span class="line">UsePAM yes</span><br><span class="line"></span><br><span class="line">#AllowAgentForwarding yes</span><br><span class="line">#AllowTcpForwarding yes</span><br><span class="line">#GatewayPorts no</span><br><span class="line">X11Forwarding yes</span><br><span class="line">#X11DisplayOffset 10</span><br><span class="line">#X11UseLocalhost yes</span><br><span class="line">#PermitTTY yes</span><br><span class="line">#PrintMotd yes</span><br><span class="line">#PrintLastLog yes</span><br><span class="line">#TCPKeepAlive yes</span><br><span class="line">#UseLogin no</span><br><span class="line">#UsePrivilegeSeparation sandbox</span><br><span class="line">#PermitUserEnvironment no</span><br><span class="line">#Compression delayed</span><br><span class="line">#ClientAliveInterval 0</span><br><span class="line">#ClientAliveCountMax 3</span><br><span class="line">#ShowPatchLevel no</span><br><span class="line">#UseDNS yes                         # 是否允许dns反向解析, 禁止可以提升反应速度</span><br><span class="line">#PidFile /var/run/sshd.pid</span><br><span class="line">#MaxStartups 10:30:100</span><br><span class="line">#PermitTunnel no</span><br><span class="line">#ChrootDirectory none</span><br><span class="line">#VersionAddendum none</span><br><span class="line"></span><br><span class="line"># no default banner path</span><br><span class="line">#Banner none</span><br><span class="line"></span><br><span class="line"># Accept locale-related environment variables</span><br><span class="line">AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES</span><br><span class="line">AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT</span><br><span class="line">AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE</span><br><span class="line">AcceptEnv XMODIFIERS</span><br><span class="line"></span><br><span class="line"># override default of no subsystems</span><br><span class="line">Subsystem	sftp	/usr/libexec/openssh/sftp-server</span><br><span class="line"></span><br><span class="line"># Example of overriding settings on a per-user basis</span><br><span class="line">#Match User anoncvs</span><br><span class="line">#	X11Forwarding no</span><br><span class="line">#	AllowTcpForwarding no</span><br><span class="line">#	PermitTTY no</span><br><span class="line">#	ForceCommand cvs server</span><br><span class="line"># AllowUsers root@192.168.1.1 test            # 设置允许登录的用户 这里设置只允许test 和 root登录 而且root只允许在192.168.1.1访问</span><br><span class="line"># DenyUsers test2                             # 禁止test2用户登录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x2F;etc&#x2F;ssh&#x2F;ssh_config 针对客户端的配置文件</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/ssh_config</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#	$OpenBSD: ssh_config,v 1.30 2016/02/20 23:06:23 sobrado Exp $</span><br><span class="line"></span><br><span class="line"># This is the ssh client system-wide configuration file.  See</span><br><span class="line"># ssh_config(5) for more information.  This file provides defaults for</span><br><span class="line"># users, and the values can be changed in per-user configuration files</span><br><span class="line"># or on the command line.</span><br><span class="line"></span><br><span class="line"># Configuration data is parsed as follows:</span><br><span class="line">#  1. command line options</span><br><span class="line">#  2. user-specific file</span><br><span class="line">#  3. system-wide file</span><br><span class="line"># Any configuration value is only changed the first time it is set.</span><br><span class="line"># Thus, host-specific definitions should be at the beginning of the</span><br><span class="line"># configuration file, and defaults at the end.</span><br><span class="line"></span><br><span class="line"># Site-wide defaults for some commonly used options.  For a comprehensive</span><br><span class="line"># list of available options, their meanings and defaults, please see the</span><br><span class="line"># ssh_config(5) man page.</span><br><span class="line"></span><br><span class="line"># Host *</span><br><span class="line">#   ForwardAgent no</span><br><span class="line">#   ForwardX11 no</span><br><span class="line">#   RhostsRSAAuthentication no</span><br><span class="line">#   RSAAuthentication yes</span><br><span class="line">#   PasswordAuthentication yes</span><br><span class="line">#   HostbasedAuthentication no</span><br><span class="line">#   GSSAPIAuthentication no</span><br><span class="line">#   GSSAPIDelegateCredentials no</span><br><span class="line">#   GSSAPIKeyExchange no</span><br><span class="line">#   GSSAPITrustDNS no</span><br><span class="line">#   BatchMode no</span><br><span class="line">#   CheckHostIP yes</span><br><span class="line">#   AddressFamily any</span><br><span class="line">#   ConnectTimeout 0</span><br><span class="line">#   StrictHostKeyChecking ask</span><br><span class="line">#   IdentityFile ~/.ssh/identity</span><br><span class="line">#   IdentityFile ~/.ssh/id_rsa</span><br><span class="line">#   IdentityFile ~/.ssh/id_dsa</span><br><span class="line">#   IdentityFile ~/.ssh/id_ecdsa</span><br><span class="line">#   IdentityFile ~/.ssh/id_ed25519</span><br><span class="line">#   Port 22</span><br><span class="line">#   Protocol 2</span><br><span class="line">#   Cipher 3des</span><br><span class="line">#   Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc</span><br><span class="line">#   MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-ripemd160</span><br><span class="line">#   EscapeChar ~</span><br><span class="line">#   Tunnel no</span><br><span class="line">#   TunnelDevice any:any</span><br><span class="line">#   PermitLocalCommand no</span><br><span class="line">#   VisualHostKey no</span><br><span class="line">#   ProxyCommand ssh -q -W %h:%p gateway.example.com</span><br><span class="line">#   RekeyLimit 1G 1h</span><br><span class="line">#</span><br><span class="line"># Uncomment this if you want to use .local domain</span><br><span class="line"># Host *.local</span><br><span class="line">#   CheckHostIP no</span><br><span class="line"></span><br><span class="line">Host *</span><br><span class="line">    GSSAPIAuthentication yes</span><br><span class="line"># If this option is set to yes then remote X11 clients will have full access</span><br><span class="line"># to the original X11 display. As virtually no X11 client supports the untrusted</span><br><span class="line"># mode correctly we set this to yes.</span><br><span class="line">    ForwardX11Trusted yes</span><br><span class="line"># Send locale-related environment variables</span><br><span class="line">    SendEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES</span><br><span class="line">    SendEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT</span><br><span class="line">    SendEnv LC_IDENTIFICATION LC_ALL LANGUAGE</span><br><span class="line">    SendEnv XMODIFIERS</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="sshd支持两种连接方式"><a href="#sshd支持两种连接方式" class="headerlink" title="sshd支持两种连接方式"></a>sshd支持两种连接方式</h2><ul>
+<li><p>密码连接<br>对服务器中本地系统用户的登录名称、密码进行验证。简便，但可能会被暴力破解</p>
+</li>
+<li><p>密钥对连接<br>要求提供相匹配的密钥信息才能通过验证。通常先在客户端中创建一对密钥文件（公钥、私钥），然后将公钥文件放到服务器中的指定位置。远程登录时，系统将使用公钥、私钥进行加密&#x2F;解密关联验证。能增强安全性，且可以免交互登录。</p>
+</li>
+</ul>
+<h2 id="密钥"><a href="#密钥" class="headerlink" title="密钥"></a><strong>密钥</strong></h2><h3 id="生成密钥对"><a href="#生成密钥对" class="headerlink" title="生成密钥对"></a><strong>生成密钥对</strong></h3><ul>
+<li><p>在客户端使用<code>ssh-keygen</code>命令 生成密钥对 默认存放在<code>~/.ssh/</code>中 { <code>~</code> 指的是系统用户目录}</p>
+</li>
+<li><p>命令选项</p>
+<ul>
+<li>-b：指定密钥长度；</li>
+<li>-e：读取openssh的私钥或者公钥文件；</li>
+<li>-C：添加注释；</li>
+<li>-f：指定用来保存密钥的文件名；</li>
+<li>-i：读取未加密的ssh-v2兼容的私钥&#x2F;公钥文件，然后在标准输出设备上显示openssh兼容的私钥&#x2F;公钥；</li>
+<li>-l：显示公钥文件的指纹数据；</li>
+<li>-N：提供一个新密语；</li>
+<li>-P：提供（旧）密语；</li>
+<li>-q：静默模式；</li>
+<li>-t：指定要创建的密钥类型。</li>
+</ul>
+</li>
+<li><p>生成密钥对命令 执行命令后会提示输入密码之类的信息 一路回车即可</p>
+<pre><code>  //会在 ~/.ssh/ 中生成名为 id_rsa 的4096位密钥对
+  $ ssh-keygen -t rsa -b 4096 -C &quot;your@email.com&quot;
+
+  //-f 自定义密钥名
+  $ ssh-keygen -t rsa -C &quot;your@email.com&quot; -f ~/.ssh/filename
+</code></pre>
+</li>
+<li><p>生成好后会有2个文件</p>
+<ul>
+<li><code>id_rsa</code> 私钥</li>
+<li><code>id_rsa.pub</code> 公钥</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置服务器密钥"><a href="#配置服务器密钥" class="headerlink" title="配置服务器密钥"></a><strong>配置服务器密钥</strong></h3><ul>
+<li><p>将生成的公钥 拷贝到远程主机的 <code>~/.ssh/</code> 目录, 命名为 <code>authorized_keys</code></p>
+</li>
+<li><p>配置<code>/etc/ssh/sshd_config</code></p>
+<pre><code>  //RSA认证 非必须 不存在不添加此项
+  RSAAuthentication yes
+
+  //公钥认证
+  PubkeyAuthentication yes
+
+  //禁止root登录
+  PermitRootLogin yes
+
+  //是否密码认证
+  PasswordAuthentication no
+  ChallengeResponseAuthentication no
+
+  //指定密钥文件
+  AuthorizedKeysFile  .ssh/authorized_keys
+</code></pre>
+</li>
+<li><p>修改后重启服务</p>
+<pre><code>  $ /bin/systemctl restart sshd.service
+</code></pre>
+</li>
+<li><p>文件权限</p>
+<ul>
+<li><p>1 <code>.ssh</code>目录的权限必须是700</p>
+<pre><code>  chmod 700 ~/.ssh
+</code></pre>
+</li>
+<li><p>2 <code>.ssh/authorized_keys</code>文件权限必须是600</p>
+<pre><code>  chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Client-SSH配置"><a href="#Client-SSH配置" class="headerlink" title="Client SSH配置"></a>Client SSH配置</h1><h2 id="客户端使用的程序"><a href="#客户端使用的程序" class="headerlink" title="客户端使用的程序"></a>客户端使用的程序</h2><ul>
+<li>客户端：Putty、Xshell、Xftp、CRT、Git、ssh</li>
+</ul>
+<h2 id="客户端远程登录命令"><a href="#客户端远程登录命令" class="headerlink" title="客户端远程登录命令"></a>客户端远程登录命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh [选项] root@192.168.1.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">选项 说明</span><br><span class="line">-1 强制使用ssh协议版本1</span><br><span class="line">-2 强制使用ssh协议版本2</span><br><span class="line">-4 强制使用IPv4地址</span><br><span class="line">-6 强制使用IPv6地址</span><br><span class="line">-A 开启认证代理连接转发功能</span><br><span class="line">-a 关闭认证代理连接转发功能</span><br><span class="line">-b 使用本机指定的地址作为对位连接的源IP地址</span><br><span class="line">-C 请求压缩所有数据</span><br><span class="line">-F 指定ssh指令的配置文件，默认的配置文件为“/etc/ssh/ssh_config”</span><br><span class="line">-f 后台执行ssh指令</span><br><span class="line">-g 允许远程主机连接本机的转发端口</span><br><span class="line">-i 指定身份文件（即私钥文件）</span><br><span class="line">-l 指定连接远程服务器的登录用户名</span><br><span class="line">-N 不执行远程指令</span><br><span class="line">-o 指定配置选项</span><br><span class="line">-p 指定远程服务器上的端口</span><br><span class="line">-q 静默模式，所有的警告和诊断信息被禁止输出</span><br><span class="line">-X 开启X11转发功能</span><br><span class="line">-x 关闭X11转发功能</span><br><span class="line">-y 开启信任X11转发功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh登录服务器"><a href="#ssh登录服务器" class="headerlink" title="ssh登录服务器"></a>ssh登录服务器</h2><ul>
+<li><p>连接服务器</p>
+<pre><code>  $ ssh username@hostip
+</code></pre>
+</li>
+<li><p>自定义端口</p>
+<pre><code>  $ ssh -p 6666 username@hostip
+</code></pre>
+</li>
+<li><p>自定义密钥 <code>~/.ssh/key</code> 自定义密钥名</p>
+<pre><code>  $ ssh -i ~/.ssh/key username@hostip
+</code></pre>
+</li>
+<li><p>客户端执行调试 会显示一些登录信息</p>
+<pre><code>  $ ssh -v user@host
+</code></pre>
+</li>
+</ul>
+<h2 id="scp拷贝文件到服务器"><a href="#scp拷贝文件到服务器" class="headerlink" title="scp拷贝文件到服务器"></a>scp拷贝文件到服务器</h2><ul>
+<li><p>使用scp命令</p>
+<pre><code>  scp -r ./down root@192.168.31.1:/tmp/
+</code></pre>
+</li>
+</ul>
+<h2 id="sftp"><a href="#sftp" class="headerlink" title="sftp"></a>sftp</h2><ul>
+<li>由于使用了加密&#x2F;解密技术，所以传输效率比普通的FTP要低，但安全性更高。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sftp root@192.168.1.1</span><br><span class="line">root@192.168.1.1&#x27;s password:</span><br><span class="line">Connected to 192.168.1.1.</span><br><span class="line">sftp&gt; ls</span><br><span class="line">sftp&gt; get 文件名 #下载文件</span><br><span class="line">sftp&gt; put 文件名 #上传文件</span><br><span class="line">sftp&gt; exit #退出</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="问题错误"><a href="#问题错误" class="headerlink" title="问题错误"></a>问题错误</h2><h3 id="连接服务器时的错误信息-1"><a href="#连接服务器时的错误信息-1" class="headerlink" title="连接服务器时的错误信息 1"></a>连接服务器时的错误信息 1</h3><ul>
+<li>no matching key exchange method found. Their offer: diffie-hellman-group1-sha1,diffie-hellman-group14-sha1</li>
+</ul>
+<ol>
+<li><p>方法1</p>
+<ul>
+<li><p>打开<code>~/.ssh/config</code>文件</p>
+</li>
+<li><p>填入下面的内容</p>
+<pre><code>  Host *
+  KexAlgorithms +diffie-hellman-group1-sha1
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>方法2</p>
+<ul>
+<li><p>打开<code>/etc/ssh/ssh_config</code>文件</p>
+</li>
+<li><p>在尾部加入</p>
+<pre><code>   KexAlgorithms +diffie-hellman-group1-sha1
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="连接服务器时的错误信息-2"><a href="#连接服务器时的错误信息-2" class="headerlink" title="连接服务器时的错误信息 2"></a>连接服务器时的错误信息 2</h3><ul>
+<li><p>no matching host key type found. Their offer: ssh-rsa,ssh-dss</p>
+</li>
+<li><p>Git安装目录 打开&#x2F;etc&#x2F;ssh&#x2F;ssh_config</p>
+</li>
+<li><p>追加下面的内容</p>
+<pre><code>  //修改主机名为你的
+  Host 123.123.123.123
+  HostkeyAlgorithms +ssh-rsa
+  PubkeyAcceptedAlgorithms +ssh-rsa
+</code></pre>
+</li>
+</ul>
+<h3 id="连接服务器时的错误信息-3"><a href="#连接服务器时的错误信息-3" class="headerlink" title="连接服务器时的错误信息 3"></a>连接服务器时的错误信息 3</h3><ul>
+<li><p>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</p>
+</li>
+<li><p>出现以下错误</p>
+<pre><code>  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+  Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+  It is also possible that a host key has just been changed.
+  The fingerprint for the RSA key sent by the remote host is
+  SHA256:yC12kr+kWYA5g/g2Pfz37mEJ9Rg0GmqMSZd12FJYd5Q.
+  Please contact your system administrator.
+  Add correct host key in /c/Users/S/.ssh/known_hosts to get rid of this message.
+  Offending RSA key in /c/Users/S/.ssh/known_hosts:12
+  Host key for 192.168.8.8 has changed and you have requested strict checking.
+  Host key verification failed.
+</code></pre>
+</li>
+<li><p>解决方法</p>
+</li>
+<li><p>打开<code>~/.ssh/known_hosts</code>文件 删除你要连接的主机信息 如192.168.0.1,github.com</p>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>SSH</p><p><a href="http://blog.pp6f.com/2022/03/03/Tools/ssh/">http://blog.pp6f.com/2022/03/03/Tools/ssh/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-03-03</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a><a class="icons" rel="noopener" target="_blank" title="ShareAlike" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="icon fab fa-creative-commons-sa"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/SSH/">SSH</a><a class="link-muted mr-2" rel="tag" href="/tags/Tools/">Tools</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62075f04049246001a1511a9&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/donate/alipay.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/donate/wechat.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/03/08/Dev/python/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Python</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/02/24/Dev/nextjs/"><span class="level-item">Next.js 笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="binbruce/blog.pp6f.github.io" issue-term="pathname" label="some-issue-label" theme="github-light" crossorigin="anonymous" async></script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Bruce"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bruce</p><p class="is-size-6 is-block">Bruce&#039;s Blog</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">19</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">23</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/binbruce" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/binbruce"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Google" href="https://google.com/"><i class="fab fa-google"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#索引"><span class="level-left"><span class="level-item">1</span><span class="level-item">索引</span></span></a></li><li><a class="level is-mobile" href="#Server-SSH配置"><span class="level-left"><span class="level-item">2</span><span class="level-item">Server SSH配置</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#服务端使用的工具"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">服务端使用的工具</span></span></a></li><li><a class="level is-mobile" href="#SSH服务开启-状态查询"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">SSH服务开启 状态查询</span></span></a></li><li><a class="level is-mobile" href="#SSH配置"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">SSH配置</span></span></a></li><li><a class="level is-mobile" href="#sshd支持两种连接方式"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">sshd支持两种连接方式</span></span></a></li><li><a class="level is-mobile" href="#密钥"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">密钥</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#生成密钥对"><span class="level-left"><span class="level-item">2.5.1</span><span class="level-item">生成密钥对</span></span></a></li><li><a class="level is-mobile" href="#配置服务器密钥"><span class="level-left"><span class="level-item">2.5.2</span><span class="level-item">配置服务器密钥</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#Client-SSH配置"><span class="level-left"><span class="level-item">3</span><span class="level-item">Client SSH配置</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#客户端使用的程序"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">客户端使用的程序</span></span></a></li><li><a class="level is-mobile" href="#客户端远程登录命令"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">客户端远程登录命令</span></span></a></li><li><a class="level is-mobile" href="#ssh登录服务器"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">ssh登录服务器</span></span></a></li><li><a class="level is-mobile" href="#scp拷贝文件到服务器"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">scp拷贝文件到服务器</span></span></a></li><li><a class="level is-mobile" href="#sftp"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">sftp</span></span></a></li><li><a class="level is-mobile" href="#问题错误"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">问题错误</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#连接服务器时的错误信息-1"><span class="level-left"><span class="level-item">3.6.1</span><span class="level-item">连接服务器时的错误信息 1</span></span></a></li><li><a class="level is-mobile" href="#连接服务器时的错误信息-2"><span class="level-left"><span class="level-item">3.6.2</span><span class="level-item">连接服务器时的错误信息 2</span></span></a></li><li><a class="level is-mobile" href="#连接服务器时的错误信息-3"><span class="level-left"><span class="level-item">3.6.3</span><span class="level-item">连接服务器时的错误信息 3</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Dev/"><span class="level-start"><span class="level-item">Dev</span></span><span class="level-end"><span class="level-item tag">8</span></span></a><ul><li><a class="level is-mobile" href="/categories/Dev/Net-Core/"><span class="level-start"><span class="level-item">.Net Core</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/MySql/"><span class="level-start"><span class="level-item">MySql</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Next-js/"><span class="level-start"><span class="level-item">Next.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Nginx/"><span class="level-start"><span class="level-item">Nginx</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Node-js/"><span class="level-start"><span class="level-item">Node.js</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Dev/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Git/"><span class="level-start"><span class="level-item">Git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/GitHub/"><span class="level-start"><span class="level-item">GitHub</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/Hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/System/"><span class="level-start"><span class="level-item">System</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/categories/System/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/Windows/"><span class="level-start"><span class="level-item">Windows</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/System/%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F/"><span class="level-start"><span class="level-item">路由系统</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/Tools/"><span class="level-start"><span class="level-item">Tools</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/categories/Tools/SSH/"><span class="level-start"><span class="level-item">SSH</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-02T17:05:08.000Z">2022-04-02</time></p><p class="title"><a href="/2022/04/02/Dev/mysql/">MySql 安装 使用</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/MySql/">MySql</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-31T01:51:11.000Z">2022-03-31</time></p><p class="title"><a href="/2022/03/31/Dev/nginx-log/">nginx 日志</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T20:30:21.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx-conf/">配置 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T15:08:09.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/nginx/">CentOS 安装 使用 Nginx</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Nginx/">Nginx</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-03-29T14:27:54.000Z">2022-03-29</time></p><p class="title"><a href="/2022/03/29/Dev/netcore/">CentOS安装 .NET Core 运行环境 并运行 .NET Core 程序</a></p><p class="categories"><a href="/categories/Dev/">Dev</a> / <a href="/categories/Dev/Net-Core/">.Net Core</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">四月 2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">三月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">二月 2022</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Article/"><span class="tag">Article</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C#</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Dev/"><span class="tag">Dev</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Encrypt/"><span class="tag">Encrypt</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github/"><span class="tag">Github</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Actions/"><span class="tag">Github Actions</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Github-Desktop/"><span class="tag">Github Desktop</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo-Theme/"><span class="tag">Hexo Theme</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Icarus/"><span class="tag">Icarus</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySql/"><span class="tag">MySql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Net-Core/"><span class="tag">Net Core</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Node-js/"><span class="tag">Node.js</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Openwrt/"><span class="tag">Openwrt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python/"><span class="tag">Python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SSH/"><span class="tag">SSH</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/System/"><span class="tag">System</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ubuntu/"><span class="tag">Ubuntu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Windows/"><span class="tag">Windows</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li><li><a class="level is-mobile" href="https://ppoffice.github.io/hexo-theme-icarus/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Icarus</span></span><span class="level-right"><span class="level-item tag">ppoffice.github.io</span></span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo.png" alt="Bruce&#039;s Blog" height="28"><img class="logo-img-dark" src="/img/logo-dark.png" alt="Bruce&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 Bruce's Blog</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客, <span id="busuanzi_value_site_pv">0</span>次访问</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/binbruce"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script src="/js/night.js" defer></script><script>if (true == true) {
+			$(document).ready(function () {
+				var int = setInterval(fixCount, 100);
+				var uvOffSet = parseInt(13900);
+				var pvOffSet = parseInt(31900);
+				
+				function fixCount() {
+					var realUv = parseInt($("#busuanzi_value_site_uv").html())
+					var realPv = parseInt($("#busuanzi_value_site_pv").html())
+					if ($("#busuanzi_container_site_uv").css("display") != "none" && realUv > 0) {
+						clearInterval(int);
+						$("#busuanzi_value_site_uv").html(realUv + uvOffSet);
+						$("#busuanzi_value_site_pv").html(realPv + pvOffSet);
+					}
+				}
+			});
+		}</script>           <div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
